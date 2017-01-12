@@ -30,73 +30,35 @@
         <div class="col s3">
           <div class="row">
             <div class="col s12">
-              <img class="circle" src="img/victor.jpg" width="200">
+              <img class="circle" src="img/".${student.picture } width="200">
             </div>
           </div>
           <div class="row">
             <div class="s12">
-              06.70.76.73.80
+              ${student.telphone}
             </div>
           </div>
-          
-          <c:forEach var="parametre" items="${ paramValues }"> 
-
-         <ul>
-
-            <%-- Affiche la clé de la Map paramValues,
-
-            qui correspond concrètement au nom du paramètre. --%>
-
-            <li><b><c:out value="${ parametre.key }"/></b> :</li>
-
-
-            <%-- Parcourt le tableau de String[] associé à la clé traitée, 
-
-            qui correspond à la liste de ses valeurs. --%>
-
-            <c:forEach var="value" items="${ parametre.value }">
-
-               <%-- Affiche chacune des valeurs pour la clé donnée --%>
-
-               <c:out value="${ value }"/>   
-
-            </c:forEach>
-
-         </ul>
-
-      </c:forEach>
-          
-      <!--<c:forEach var="profilHelene" items="${ parametre.profilHelene }">
-
-               <%-- Affiche chacune des valeurs pour la clé donnée --%>
-
-               <c:out value="${ value }"/>   -->
-
-            
           <div class="row">
             <div class="s12">
-              vely@juniorisep.com
+				${student.email}
             </div>
           </div>
         </div>
         <div class="col s4 offset-s4">
           <div class="row">
             <div class="col s4">
-              <h4>Victor</h4>
+              <h4>${student.firstName}</h4>
             </div>
             <div class="col s4">
-              <h4>ELY</h4>
+              <h4>${student.lastName }</h4>
             </div>
           </div>
-          
-             <!--</c:forEach> -->
-          
           <div class="row">
             <div class="col s4">
               Étudiant
             </div>
             <div class="col s8">
-              Promotion 2018
+              Promotion 2018 ${student.garde}
             </div>
           </div>
           <div class="row">

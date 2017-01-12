@@ -110,3 +110,7 @@ div.stats .percent {
   background: yellowgreen;
   background-image: linear-gradient(to right, transparent 50%, #655 0);
 }
+
+.center{
+	text-align : center;
+}

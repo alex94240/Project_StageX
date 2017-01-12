@@ -20,6 +20,8 @@
       <div class="row">
         <div class="col s6 offset-s3">
           <div class="card">
+            <form method="post" action="LoginServlet">
+          
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="img/isep.png">
             </div>
@@ -46,10 +48,13 @@
               </div>
             </div>
             <div class="row">
-              <div class="col s6 offset-s2">
-                <a class="waves-effect waves-light btn btn-isep" href="home.jsp"><i class="material-icons left">email</i>Connexion</a>
-              </div>
+              <div class="col s6 offset-s2 center">
+				<button class="btn waves-effect waves-light btn-isep" type="submit" name="action">Connexion
+    				<i class="material-icons right">send</i>
+ 				</button>
+ 				</div>
             </div><br>
+            </form>
           </div>
         </div>
       </div>
