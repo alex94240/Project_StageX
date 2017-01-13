@@ -40,9 +40,7 @@ public class ProfileServlet extends HttpServlet {
 	
 		StudentDaoFactory studentBdd = new StudentDaoFactory();
 		Student student = studentBdd.getStudent(request); //je récupère dans la bdd l'étudiant qui est en cours de session 		
-		
-		System.out.println(student.toString());
-				
+
 		request.setAttribute("student", student); //dans cet attribut
 				
 		this.getServletContext().getRequestDispatcher("/profile.jsp" ).forward( request, response );

@@ -31,7 +31,7 @@
             <!-- TODO : statistics pie charts (camembert) -->
             <ul>
                 <li>Salaire moyen des étudiants en entreprise :<br>
-                	<span class="numbers center">1000</span>  <!-- ${avgSalInternship} -->
+                	<span class="numbers center">${avgSalInternship}</span>  <!-- ${avgSalInternship} -->
                 </li>
                 <li>Statistique 2<span class="percent v30">30 %</span></li>
                 <li>Statistique 3<span class="percent v100">100 %</span></li>
