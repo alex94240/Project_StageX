@@ -19,7 +19,6 @@ public class StudentDaoFactory extends GenericDaoImpl<Student>{
 	
 	 public Student getStudent(HttpServletRequest request){
 		
-		List<Student> students = new ArrayList<>();
 		Student student = new Student();
 	
         DatabaseConnection databaseConnection = null;
@@ -64,9 +63,7 @@ public class StudentDaoFactory extends GenericDaoImpl<Student>{
                 student.setMotivation(motivation);
                 student.setCv(cv);
                 student.setPicture(picture);
-               
-                students.add(student);
-            }
+                }
         }
                      
             

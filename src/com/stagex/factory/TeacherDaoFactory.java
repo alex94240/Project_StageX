@@ -68,33 +68,3 @@ public class TeacherDaoFactory extends GenericDaoImpl<Teacher> {
 	}
 	
 }
-
-class TeacherDAO{
-	public Student getStudent(int userid)
-	{
-		try{
-			Student s = new Student();
-			s.userid = userid;
-			String query = "select username from student where userid="+userid;
-		
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/stagex?useSSL=false","root","root");
-			Statement  st = (Statement) con.createStatement();
-		
-			ResultSet rs = st.executeQuery(query);
-			rs.next();
-			String name = rs.getString(1);
-			s.username = name;
-			return s;
-		}
-		catch(Exception ex){
-			System.out.println(ex);
-		}
-		return null;
-		}
-	} 
-
-class Student{
-	int userid;
-	String username;
-}

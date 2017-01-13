@@ -100,7 +100,7 @@
             <div class="file-field input-field">
               <div class="btn btn-isep">
                 <span>Lettre de motivation</span>
-                <input type="file">
+                <input type="file" name="file">
               </div>
               <div class="file-path-wrapper">
                 <input class="file-path validate" type="text">

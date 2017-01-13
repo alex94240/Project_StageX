@@ -104,6 +104,10 @@ div.stats .percent {
 .v20 { background: #12ff00; width: 20%; }
 .v10 { background: #00ff60; width: 10%; }
 
+.numbers{
+	font-size : 30px;
+}
+
 .pie {
   width: 100px; height: 100px;
   border-radius: 50%;

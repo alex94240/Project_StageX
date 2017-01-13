@@ -1,5 +1,11 @@
 package com.stagex.bean;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.UUID;
+
 import com.stagex.annotation.*;
 
 @Entity("student")
@@ -153,4 +159,5 @@ public class Student {
 		return res;
 	}
 
+	
 }

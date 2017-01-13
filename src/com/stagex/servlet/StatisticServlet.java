@@ -13,13 +13,13 @@ import com.stagex.factory.TeacherDaoFactory;
  * Servlet implementation class Statistics
  */
 @WebServlet("/Statistics")
-public class Statistics extends HttpServlet {
+public class StatisticServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Statistics() {
+    public StatisticServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +36,7 @@ public class Statistics extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("avgSalInternship",a);
-		this.getServletContext().getRequestDispatcher( "/WebContent/index.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/reporting.jsp" ).forward( request, response );
 	}
 
 	/**

@@ -30,7 +30,9 @@
           <div class="stats">
             <!-- TODO : statistics pie charts (camembert) -->
             <ul>
-                <li>Statistique 1<span class="percent v70">70 %</span></li>
+                <li>Salaire moyen des étudiants en entreprise :<br>
+                	<span class="numbers center">1000</span>  <!-- ${avgSalInternship} -->
+                </li>
                 <li>Statistique 2<span class="percent v30">30 %</span></li>
                 <li>Statistique 3<span class="percent v100">100 %</span></li>
             </ul>
