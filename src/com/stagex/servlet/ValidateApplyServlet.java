@@ -39,6 +39,7 @@ public class ValidateApplyServlet extends HttpServlet {
 		//find all apply not vaidated by teacher 
 		Map<String,Object> sqlWhereMap = new HashMap<String, Object>();   
         sqlWhereMap.put("validate", null);
+        
         List<Apply> applyList = null;
         ApplyDaoFactory applyFactory = new ApplyDaoFactory();
         
@@ -48,6 +49,15 @@ public class ValidateApplyServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
+		
+		if(!applyList.isEmpty()){
+			for(int i =0; i<applyList.size(); i++){
+				System.out.println(applyList.get(i).toString());
+			}
+		}
+		else{
+			System.out.println("Aucune demande de convention en cours de validation");
+		}
 		
 		request.setAttribute("applyList", applyList);
 		

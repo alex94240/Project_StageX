@@ -38,7 +38,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         Field[] fields = clazz.getDeclaredFields(); 
         
         for (Field field : fields) {  
-            PropertyDescriptor pd = new PropertyDescriptor(field.getName(),t.getClass());  
+        	PropertyDescriptor pd = new PropertyDescriptor(field.getName(),t.getClass());  
             if (field.isAnnotationPresent(Id.class)) {  
                 fieldNames.append(field.getAnnotation(Id.class).value()).append(",");  
                 fieldValues.add(pd.getReadMethod().invoke(t));  
@@ -48,7 +48,14 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
             }  
             placeholders.append("?").append(",");  
         }  
-         
+        
+        System.out.println(fieldNames.toString());
+    	System.out.println("La valeur des champs sont : ") ;
+        for(int i = 0; i<fieldValues.size(); i++){
+        
+        	System.out.println(fieldValues.get(i));
+        }
+        
         fieldNames.deleteCharAt(fieldNames.length()-1);  
         placeholders.deleteCharAt(placeholders.length()-1);  
           
@@ -59,7 +66,9 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
            .append(") values (").append(placeholders).append(")") ; 
         DatabaseConnection dbConn = new DatabaseConnection();
         PreparedStatement ps = dbConn.getConnection().prepareStatement(sql.toString());  
-         
+        
+        System.out.println(sql);
+        
         setParameter(fieldValues, ps, false);  
         
         ps.execute();  
@@ -200,7 +209,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         String sql = "select " + fieldNames + " from " + tableName + " " + TABLE_ALIAS;  
         PreparedStatement ps = null;  
         List<Object> values = null;  
-        if (sqlWhereMap != null) {  
+        if (!sqlWhereMap.isEmpty()) {  
             List<Object> sqlWhereWithValues = getSqlWhereWithValues(sqlWhereMap);  
             if (sqlWhereWithValues != null) {  
                 
@@ -249,7 +258,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 		for (Field field : fields) {
 			PropertyDescriptor pd = new PropertyDescriptor(field.getName(), t.getClass());
 			if (field.isAnnotationPresent(Id.class)) {
-				fieldNames.append(field.getAnnotation(Id.class).value()).append(",");  
+				fieldNames.append(field.getAnnotation(Id.class).value()).append(","); 
                 fieldValues.add(pd.getReadMethod().invoke(t));
 			} else if (field.isAnnotationPresent(Column.class)) {
 				fieldNames.append(field.getAnnotation(Column.class).value()).append(",");
@@ -257,6 +266,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 				sqlWhereMap.put(field.getAnnotation(Column.class).value(), pd.getReadMethod().invoke(t));
 			}
 			placeholders.append("?").append(",");
+			System.out.println(field.toString());
 		}
 
 		fieldNames.deleteCharAt(fieldNames.length() - 1);
@@ -279,14 +289,18 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
          
         
         for (Field field : fields) {  
-            String propertyName = field.getName();  
-            if (field.isAnnotationPresent(Id.class)) {  
+            String propertyName = field.getName(); 
+            System.out.println("L'attribut est : " + propertyName);
+            if (field.isAnnotationPresent(Id.class)) { 
+            	System.out.println("We are into Id.class ");
                 idFieldName = field.getAnnotation(Id.class).value();  
                 fieldNames.append(TABLE_ALIAS + "." + idFieldName)  
-                          .append(" as ").append(propertyName).append(",");  
+                          .append(" as ").append(propertyName).append(",");
+                System.out.println("Le nom du champ est " + idFieldName);
             } else if (field.isAnnotationPresent(Column.class)) {  
                 fieldNames.append(TABLE_ALIAS + "." + field.getAnnotation(Column.class).value())  
-                          .append(" as ").append(propertyName).append(",");  
+                          .append(" as ").append(propertyName).append(","); 
+                System.out.println("Les noms de champs sont : (Column.class)" + fieldNames);
             }  
         }  
         fieldNames.deleteCharAt(fieldNames.length()-1);  
@@ -314,11 +328,12 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         } else {  
             ps1 = dbConn1.getConnection().prepareStatement(sql1);  
         }  
-          
  
         ResultSet rs = ps1.executeQuery();  
         if(rs.next()){
+        	System.out.println("There is an element into db");
         	id = rs.getInt(1);
+        	
         }
 
         dbConn1.close(); 
@@ -410,10 +425,12 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     
     
     private void setParameter(List<Object> values, PreparedStatement ps, boolean isSearch)  
-            throws SQLException {  
+            throws SQLException{  
         for (int i = 1; i <= values.size(); i++) {  
             Object fieldValue = values.get(i-1);  
+            System.out.println("into set parameter " + fieldValue);
             Class<?> clazzValue = fieldValue.getClass();  
+            System.out.println(clazzValue);
             if (clazzValue == String.class) {  
                 if (isSearch)   
                     ps.setString(i, "%" + (String)fieldValue + "%");  

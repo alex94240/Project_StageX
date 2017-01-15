@@ -8,16 +8,7 @@ import com.stagex.bean.Teacher;
 import com.stagex.dao.GenericDaoImpl;
 import com.stagex.dbutil.DatabaseConnection;
 
-public class TeacherDaoFactory extends GenericDaoImpl<Teacher> {
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		TeacherDAO dao = new TeacherDAO(); //creating obj for class StudentDAO		
-		for(int i=1; i>=0; i++){
-		Student s1 = dao.getStudent(i);//we dont hav a method here so we hav to define below
-		System.out.println(s1.userid +" "+ s1.username);
-		}
-	}
+public class TeacherDaoFactory extends GenericDaoImpl<Teacher>  {
 	
 	//salary internship
 	public static int salInternship() throws Exception{
