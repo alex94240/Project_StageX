@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="row card-panel">
-        <form class="col s12" action="ApplyServlet" method="post">
+        <form class="col s12" action="ApplyServlet" method="post" id="localStorage">
        	  <% 
         	String group = request.getParameter("group");
       		String nom = request.getParameter("nom");
@@ -150,6 +150,32 @@
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			function init() {
+				var inputs = document.getElementsByTagName('input');
+				for(var i=0; i<inputs.length; i++){
+				    if(localStorage[$(inputs[i]).attr('name')]){
+				    	//alert(localStorage[$(inputs[i]).attr('name')]);
+				    	$(inputs[i]).val(localStorage[$(inputs[i]).attr('name')]);
+				    }
+				 }
+			}
+			init();
+		});
+
+		$(':input').change(function() {
+			//alert($(this).attr('name'));
+			localStorage[$(this).attr('name')] = $(this).val();
+			//var t = localStorage[$(this).attr('name')];
+			//alert(t);
+		});
+
+		$('#localStorage').submit(function() {
+			localStorage.clear();
+		});
+	</script>
 
   <script type="text/javascript">
   $('.button-collapse').sideNav({

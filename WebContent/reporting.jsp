@@ -33,17 +33,16 @@
                 <li>Salaire moyen des étudiants en entreprise :<br>
                 	<span class="numbers center">${avgSalInternship}</span>  <!-- ${avgSalInternship} -->
                 </li>
-                <li>Statistique 2<span class="percent v30">30 %</span></li>
-                <li>Statistique 3<span class="percent v100">100 %</span></li>
+                <li>Statistique 2<span >${avgSalJob}</span></li>
+                <li>Statistique 3<span ></span></li>
             </ul>
           </div>
-          <span>Statistique 4</span>
+				<span>Statistique 4</span>
           <div class="pie"></div>
         </div>
       </div>
     </main>
   </div>
-
 <%@ include file="commonContent/footer.jsp" %>
 
   <!--Import jQuery before materialize.js-->

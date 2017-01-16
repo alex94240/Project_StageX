@@ -36,7 +36,7 @@ public class ApplyDaoFactory extends GenericDaoImpl<Apply>{
         }
     }
 	     
-	}
-	
-	
 }
+	
+	
+

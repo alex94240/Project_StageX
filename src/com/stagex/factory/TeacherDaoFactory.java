@@ -2,56 +2,48 @@ package com.stagex.factory;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-
+import java.util.ArrayList;
 import java.sql.*;
+
+import com.stagex.bean.Student;
 import com.stagex.bean.Teacher;
 import com.stagex.dao.GenericDaoImpl;
 import com.stagex.dbutil.DatabaseConnection;
 
 public class TeacherDaoFactory extends GenericDaoImpl<Teacher> {
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		TeacherDAO dao = new TeacherDAO(); //creating obj for class StudentDAO		
-		for(int i=1; i>=0; i++){
-		Student s1 = dao.getStudent(i);//we dont hav a method here so we hav to define below
-		System.out.println(s1.userid +" "+ s1.username);
-		}
-	}
 	
 	//salary internship
 	public static int salInternship() throws Exception{
 		DatabaseConnection dbConn = new DatabaseConnection();
 		Connection conn= dbConn.getConnection();
 		Statement statement = conn.createStatement();
-		ResultSet resultat = statement.executeQuery( "SELECT avg(salary) FROM stagex.apply"
-				+ "WHERE validate='true';");
+		ResultSet resultat = statement.executeQuery( "SELECT avg(salary) FROM stagex.apply"	+ " WHERE validate = 1;");
 		int a = 0;
 		while (resultat.next()){
 			a=resultat.getInt("avg(salary)");
-			System.out.println("Le salaire moyen des élèves en stage est:"+a);
 		}
 		resultat.close();
 		return a;
 	}
 	
 	//salary 
-	public static void salJob() throws Exception{
+	public static int salJob() throws Exception{
 		DatabaseConnection dbConn = new DatabaseConnection();
 		Connection conn= (Connection) dbConn.getConnection();
 		Statement statement = (Statement) conn.createStatement();
 		ResultSet resultat = statement.executeQuery( "SELECT avg(salary) FROM "
 				+ "stagex.experience;");
-		System.out.println("Le salaire moyen des anciens élèves est:");
+		int a=0;
 		while (resultat.next()){
-			int a=resultat.getInt("avg(salary)");
-			System.out.println(a);
+			 a=resultat.getInt("avg(salary)");
+		
 		}
 		resultat.close();
+		return a;
 	}
 	
 	//company name of internship students
-	public static void companyStudents() throws Exception{
+	public static ArrayList<String> companyStudents() throws Exception{
 		DatabaseConnection dbConn = new DatabaseConnection();
 		Connection conn= dbConn.getConnection();
 		Statement statement = conn.createStatement();
@@ -60,11 +52,13 @@ public class TeacherDaoFactory extends GenericDaoImpl<Teacher> {
 		
 		System.out.println("Les compagnies des élèves en stage sont:");
 		
+		ArrayList companies = new ArrayList<String>();
 		while (resultat.next()){
 			String a=resultat.getString("companyname");
-			System.out.println(a);
+			companies.add(a);
 		}
 		resultat.close();
+		return companies;
 	}
 	
 }
