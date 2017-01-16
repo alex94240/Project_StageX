@@ -30,7 +30,7 @@
         <div class="col s3">
           <div class="row">
             <div class="col s12">
-              <img class="circle" src="img/".${student.picture } width="200">
+              <img class="circle" src="${student.picture }" width="200">
             </div>
           </div>
           <div class="row">
