@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 	
 		String type = null;
 		
-		/*LDAPaccess ldapaccess = new LDAPaccess();
+		LDAPaccess ldapaccess = new LDAPaccess();
 		LDAPObject ldapobject = null;
 		
 		try {
@@ -58,7 +58,8 @@ public class LoginServlet extends HttpServlet {
 			}
 			System.out.println(ldapobject.toString());
 			type = ldapobject.getType();
-			System.exit(0);
+	
+			System.out.println("connection to ldap successful");
 			
 			
 		} catch (Exception e) {
@@ -66,9 +67,11 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		*/
+		
+		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
+
 		//just for trying without LDAP connection
-		LDAPObject ldapobject = new LDAPObject("mcauche", "PsR/r7TJ", "Myléna Cauche", "Cauche", "Myléna", "student", "0601020304", "mylenacauche@gmail.com");
+		/*LDAPObject ldapobject = new LDAPObject("mcauche", "PsR/r7TJ", "Myléna Cauche", "Cauche", "Myléna", "student", "0601020304", "mylenacauche@gmail.com");
 		System.out.println(ldapobject.toString());
 
 		
@@ -144,7 +147,7 @@ public class LoginServlet extends HttpServlet {
 		}catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		}*/
 		
 	}
 
