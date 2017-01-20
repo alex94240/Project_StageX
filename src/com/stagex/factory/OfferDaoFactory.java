@@ -1,10 +1,13 @@
 package com.stagex.factory;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.PreparedStatement;
 import com.stagex.bean.Offer;
 import com.stagex.bean.Student;
 import com.stagex.dao.GenericDaoImpl;
@@ -46,6 +49,31 @@ public class OfferDaoFactory extends GenericDaoImpl<Offer>{
 		
 		return offers;
 	}
+	
+	public void validateOffer(Offer offer, boolean bool ){
+		 
+		DatabaseConnection databaseConnection = null;
+	    Connection connection = null;
+	    PreparedStatement statement = null;
+	    ResultSet result = null;
+	       
+	    try{
+	    	databaseConnection = new DatabaseConnection();
+	    	connection = databaseConnection.getConnection();
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	     
+	    try{
+	    	statement = (PreparedStatement) connection.prepareStatement("INSERT INTO offer (validate) VALUES(?);");
+            statement.setBoolean(0, bool);
+	    	result = statement.executeQuery(); 
+	    	result.next();
+	         }
+		catch (SQLException e) {
+    	   e.printStackTrace();
+       } 
+    }
 
 	
 }

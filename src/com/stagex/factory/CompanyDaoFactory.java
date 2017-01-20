@@ -12,7 +12,7 @@ import com.stagex.dbutil.DatabaseConnection;
 public class CompanyDaoFactory extends GenericDaoImpl<Company>{
 	
 	//company name of internship students
-		public static ArrayList companyStudents() throws Exception{
+		public static ArrayList<String> companyStudents() throws Exception{
 			DatabaseConnection dbConn = new DatabaseConnection();
 			Connection conn= dbConn.getConnection();
 			Statement statement = conn.createStatement();
