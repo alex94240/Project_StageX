@@ -47,4 +47,5 @@ public class OfferDaoFactory extends GenericDaoImpl<Offer>{
 		return offers;
 	}
 
+	
 }

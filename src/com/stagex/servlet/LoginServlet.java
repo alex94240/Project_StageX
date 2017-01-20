@@ -106,6 +106,7 @@ public class LoginServlet extends HttpServlet {
 				userId = currentUser.getUserId();
 			}
 			
+			System.out.println("Lee test userId:"+userId);
 
 			List<Student> students;
 			Student student;
@@ -119,6 +120,8 @@ public class LoginServlet extends HttpServlet {
 			sqlWhereType.put("userId", userId);
 			
 			if(ldapobject.getType().equals("student")){
+				
+				System.out.println("Lee test student:");
 				
     			students = stuFactory.findAllByConditions(sqlWhereType, Student.class);
     			if(students.isEmpty()){    				
@@ -142,6 +145,8 @@ public class LoginServlet extends HttpServlet {
 			}
 			else if(ldapobject.getType().equals("teacher")){
 					
+				System.out.println("Lee test teacher:");
+				
     			teachers = teacherFactory.findAllByConditions(sqlWhereType, Teacher.class);
     			if(teachers.isEmpty()){    				
     				teacher= new Teacher();
@@ -163,6 +168,28 @@ public class LoginServlet extends HttpServlet {
     			System.out.println("Le login de l'étudiant est : " + login);
     			
 			
+			}else{
+				System.out.println("Lee test exchange:");
+				
+				students = stuFactory.findAllByConditions(sqlWhereType, Student.class);
+    			if(students.isEmpty()){    				
+    				student= new Student();
+    				
+    				student.setFirstName(ldapobject.getPrenom());
+    				student.setLastName(ldapobject.getNomFamille());
+    				student.setEmail(ldapobject.getMail());
+    				student.setTelphone(ldapobject.getNumber());
+    				student.setUserId(userId);
+    				
+    				System.out.println(student.toString());
+    				personId = stuFactory.createReturnId(student);
+    			
+    			}
+    			else{
+    				personId = students.get(0).getStudentId();
+    			}
+    			System.out.println("L'id de l'étudiant : " + personId);
+    			System.out.println("Le login de l'étudiant est : " + login);
 			}
 		}catch (Exception e1) {
 			// TODO Auto-generated catch block

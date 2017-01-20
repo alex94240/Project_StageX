@@ -3,7 +3,9 @@ package com.stagex.test;
 import java.util.List;
 import java.util.Map;
 
+import com.stagex.bean.Company;
 import com.stagex.bean.Student;
+import com.stagex.factory.CompanyDaoFactory;
 import com.stagex.factory.StudentDaoFactory;
 
 public class Main {
@@ -12,7 +14,7 @@ public class Main {
 		
 		StudentDaoFactory stuFactory = new StudentDaoFactory();
 		
-		/* */
+		/* 
 		//create a new record		 
 		Student stu = new Student();
 		
@@ -28,9 +30,14 @@ public class Main {
 		stu.setTelphone(null);
 		stu.setUserId(1);
 		stu.setStudentId(100);
+		*/
+		
+		Company com = new Company();
+		com.setCompanyName("TestLee");
+		CompanyDaoFactory companyFact = new CompanyDaoFactory();
 		
 		try {
-			stuFactory.create(stu);
+			companyFact.createWithUncompleteObject(com);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	

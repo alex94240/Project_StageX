@@ -4,7 +4,7 @@ import com.stagex.annotation.Column;
 import com.stagex.annotation.Entity;
 import com.stagex.annotation.Id;
 
-@Entity("comapny")
+@Entity("company")
 public class Company {
 	@Id("companyId")
 	private int companyId;

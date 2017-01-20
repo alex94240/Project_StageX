@@ -137,7 +137,7 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">dialpad</i>
-              <input id="icon_prefix" type="text" class="validate" name="numOfSocialSecurity" value="<%= request.getAttribute("socialSnum")%>">
+              <input id="icon_prefix" type="text" class="validate" name="numOfSocialSecurity" value="">
               <label for="icon_prefix">Numéro de sécurité sociale</label>
             </div>
           </div>
