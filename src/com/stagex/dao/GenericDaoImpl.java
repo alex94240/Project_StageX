@@ -304,24 +304,40 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
 		for (Field field : fields) {
 			PropertyDescriptor pd = new PropertyDescriptor(field.getName(), t.getClass());
-			if (field.isAnnotationPresent(Id.class)) {
+
+			if (pd.getReadMethod().invoke(t) == null) {				
+				
+				if (field.isAnnotationPresent(Id.class)) {
+					fieldNames.append(field.getAnnotation(Id.class).value()).append(",");
+				} else if (field.isAnnotationPresent(Column.class)) {
+					fieldNames.append(field.getAnnotation(Column.class).value()).append(",");
+				}
+				placeholders.append("null").append(",");
+			}
+		}
+		
+		
+		for (Field field : fields) {
+			PropertyDescriptor pd = new PropertyDescriptor(field.getName(), t.getClass());
+			
+			
+			if(field.isAnnotationPresent(Column.class) && pd.getReadMethod().invoke(t) != null){
+				sqlWhereMap.put(field.getAnnotation(Column.class).value(), pd.getReadMethod().invoke(t));
+			}
+			
+			if(pd.getReadMethod().invoke(t) != null){
+				
+				if (field.isAnnotationPresent(Id.class)) {
 				fieldNames.append(field.getAnnotation(Id.class).value()).append(",");  
                 fieldValues.add(pd.getReadMethod().invoke(t));
 			} else if (field.isAnnotationPresent(Column.class)) {
 				fieldNames.append(field.getAnnotation(Column.class).value()).append(",");
 				fieldValues.add(pd.getReadMethod().invoke(t));
 			}
-			
-			if(field.isAnnotationPresent(Column.class) && pd.getReadMethod().invoke(t) != null){
-				sqlWhereMap.put(field.getAnnotation(Column.class).value(), pd.getReadMethod().invoke(t));
-			}
-			
-			if(pd.getReadMethod().invoke(t) == null){
-            	placeholders.append("null").append(",");
-            }else{
             	placeholders.append("?").append(",");
             } 
 		}
+		
 
 		fieldNames.deleteCharAt(fieldNames.length() - 1);
 		placeholders.deleteCharAt(placeholders.length() - 1);
@@ -395,6 +411,10 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
 		return id;
 	}
+	
+	
+	
+	
 	
 	
 	
