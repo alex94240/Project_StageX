@@ -16,7 +16,7 @@ public class CompanyDaoFactory extends GenericDaoImpl<Company>{
 			DatabaseConnection dbConn = new DatabaseConnection();
 			Connection conn= dbConn.getConnection();
 			Statement statement = conn.createStatement();
-			ResultSet resultat = statement.executeQuery("SELECT distinct companyname FROM stagex.company LEFT JOIN stagex.apply ON "
+			ResultSet resultat = statement.executeQuery("SELECT distinct companyname FROM company LEFT JOIN stagex.apply ON "
 					+ "stagex.company.companyId=stagex.apply.companyId;");
 			
 			ArrayList companies= new ArrayList<String>();
@@ -26,6 +26,8 @@ public class CompanyDaoFactory extends GenericDaoImpl<Company>{
 				companies.add(a);
 			}
 			resultat.close();
+			System.out.println(companies.get(0));
+			
 			return companies;
 		}	
 }
