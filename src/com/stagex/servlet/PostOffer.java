@@ -57,13 +57,13 @@ public class PostOffer extends HttpServlet {
 		offer.setDuration(duration_offer);
 		offer.setJob(group);
 		offer.setLoction(post);
-		offer.setSalary(renumeration);
+		offer.setSalary(Integer.parseInt(renumeration));
 		offer.setTitle(titre_offer);
 		
 		try {
 			int companyId = companyFact.createReturnId(company);		
 			offer.setCompanyId(companyId);		
-			offerFactory.create(offer);
+			offerFactory.createWithUncompleteObject(offer);
 			
 			System.out.println("create apply succ");
 			
