@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 	
 		String type = null;
 		
-		/*LDAPaccess ldapaccess = new LDAPaccess();
+		LDAPaccess ldapaccess = new LDAPaccess();
 		LDAPObject ldapobject = null;
 		
 		try {
@@ -70,12 +70,12 @@ public class LoginServlet extends HttpServlet {
 			System.exit(1);
 		}
 		
-		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
-*/
+/*		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
+
 		//just for trying without LDAP connection
 		LDAPObject ldapobject = new LDAPObject("mcauche", "PsR/r7TJ", "Myléna Cauche", "Cauche", "Myléna", "student", "0601020304", "mylenacauche@gmail.com");
 		System.out.println(ldapobject.toString());
-
+*/
 		
 		Map<String,Object> sqlWhereUser = new HashMap<String, Object>();   
 		sqlWhereUser.put("login", login);
