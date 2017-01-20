@@ -1,8 +1,6 @@
 package com.stagex.factory;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,5 +84,32 @@ public class StudentDaoFactory extends GenericDaoImpl<Student>{
             return student; 
        
 	}
+	 
+	 
+	 public List<Student> searchStudentBycompany(String company) throws Exception{
+		 List<Student> students = new ArrayList<Student>();
+		 
+		 DatabaseConnection dbconn = new DatabaseConnection();
+
+	      String sql = "SELECT * FROM student as s,stagex.experience as e,studentexperience as se where e.companyName like ? and se.studentId = s.studentId and se.experienceId = e.experienceId";
+	      Statement statement = dbconn.getConnection().createStatement();
+	      String c = "'%" + company + "%'";
+	      String replacedSql = sql.replaceAll("\\?", c);
+	      System.out.println(replacedSql);
+
+	      ResultSet rs = statement.executeQuery(replacedSql);	      
+
+	      while(rs.next()){
+	    	  Student temp = new Student();
+	    	  temp.setFirstName(rs.getString("firstName"));
+	    	  temp.setLastName(rs.getString("lastName"));
+	    	  temp.setEmail(rs.getString("email"));
+	    	  temp.setTelphone(rs.getString("telphone"));
+	    	  students.add(temp);
+	      }
+	      rs.close();	
+		 
+		 return students;
+	 }
 	
 }

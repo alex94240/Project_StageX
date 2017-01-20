@@ -412,32 +412,36 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     private void setParameter(List<Object> values, PreparedStatement ps, boolean isSearch)  
             throws SQLException {  
         for (int i = 1; i <= values.size(); i++) {  
-            Object fieldValue = values.get(i-1);  
-            Class<?> clazzValue = fieldValue.getClass();  
-            if (clazzValue == String.class) {  
-                if (isSearch)   
-                    ps.setString(i, "%" + (String)fieldValue + "%");  
-                else  
-                    ps.setString(i,(String)fieldValue);  
-                      
-            } else if (clazzValue == boolean.class || clazzValue == Boolean.class) {  
-                ps.setBoolean(i, (Boolean)fieldValue);  
-            } else if (clazzValue == byte.class || clazzValue == Byte.class) {  
-                ps.setByte(i, (Byte)fieldValue);  
-            } else if (clazzValue == char.class || clazzValue == Character.class) {  
-                ps.setObject(i, fieldValue,Types.CHAR);  
-            } else if (clazzValue == Date.class) {  
-                ps.setTimestamp(i, new Timestamp(((Date) fieldValue).getTime()));  
-            } else if (clazzValue.isArray()) {  
-                Object[] arrayValue = (Object[]) fieldValue;  
-                StringBuffer sb = new StringBuffer();  
-                for (int j = 0; j < arrayValue.length; j++) {  
-                    sb.append(arrayValue[j]).append("¡¢");  
-                }  
-                ps.setString(i, sb.deleteCharAt(sb.length()-1).toString());  
-            } else {  
-                ps.setObject(i, fieldValue, Types.NUMERIC);  
-            }  
+            Object fieldValue = values.get(i-1); 
+			if (fieldValue == null) {
+				ps.setNull(i, 1);
+			} else {
+				Class<?> clazzValue = fieldValue.getClass();
+				if (clazzValue == String.class) {
+					if (isSearch)
+						ps.setString(i, "%" + (String) fieldValue + "%");
+					else
+						ps.setString(i, (String) fieldValue);
+
+				} else if (clazzValue == boolean.class || clazzValue == Boolean.class) {
+					ps.setBoolean(i, (Boolean) fieldValue);
+				} else if (clazzValue == byte.class || clazzValue == Byte.class) {
+					ps.setByte(i, (Byte) fieldValue);
+				} else if (clazzValue == char.class || clazzValue == Character.class) {
+					ps.setObject(i, fieldValue, Types.CHAR);
+				} else if (clazzValue == Date.class) {
+					ps.setTimestamp(i, new Timestamp(((Date) fieldValue).getTime()));
+				} else if (clazzValue.isArray()) {
+					Object[] arrayValue = (Object[]) fieldValue;
+					StringBuffer sb = new StringBuffer();
+					for (int j = 0; j < arrayValue.length; j++) {
+						sb.append(arrayValue[j]).append("¡¢");
+					}
+					ps.setString(i, sb.deleteCharAt(sb.length() - 1).toString());
+				} else {
+					ps.setObject(i, fieldValue, Types.NUMERIC);
+				}
+			}
         }  
     }  
 

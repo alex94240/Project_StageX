@@ -12,29 +12,29 @@ public class Main {
 		
 		StudentDaoFactory stuFactory = new StudentDaoFactory();
 		
-		/* 
+		/* */
 		//create a new record		 
 		Student stu = new Student();
 		
-		stu.setAddress("test address");
-		stu.setCv("test cv");
-		stu.setEmail("test email");
-		stu.setFirstName("test firstname");
-		stu.setGarde("test grade");
-		stu.setLastName("test lastname");
-		stu.setMotivation("test motivtion");
-		stu.setPicture("test picture");
-		stu.setSocialSecruityNum("test SocialSecruityNum");
-		
-		stu.setTelphone("test telephone");
+		stu.setAddress(null);
+		stu.setCv(null);
+		stu.setEmail(null);
+		stu.setFirstName(null);
+		stu.setGarde(null);
+		stu.setLastName(null);
+		stu.setMotivation(null);
+		stu.setPicture(null);
+		stu.setSocialSecruityNum(null);
+		stu.setTelphone(null);
 		stu.setUserId(1);
+		stu.setStudentId(100);
 		
 		try {
-			stuFactory.createReturnId(stu);
+			stuFactory.create(stu);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
-		*/
+		
 		
 		
 		/* 

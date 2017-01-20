@@ -52,7 +52,6 @@
       </div>
     </main>
   </div>
-
 <%@ include file="commonContent/footer.jsp" %>
 
   <!--Import jQuery before materialize.js-->
