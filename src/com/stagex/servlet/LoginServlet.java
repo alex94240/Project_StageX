@@ -145,9 +145,11 @@ public class LoginServlet extends HttpServlet {
 	    				student.setFirstName(ldapobject.getPrenom());
 	    				student.setLastName(ldapobject.getNomFamille());
 	    				student.setEmail(ldapobject.getMail());
-	    				student.setTelphone(ldapobject.getNumber());
 	    				student.setUserId(userId);
-	    				//student.setStudentNumber(ldapobject.ge);
+	    				student.setStudentNumber(ldapobject.getNumber());
+	    				
+	    				
+	    				student.setPicture("http://storage.iseplive.fr/avatars/92/" + ldapobject.getNumber() + ".jpg");
 	    				
 	    				System.out.println(student.toString());
 	    				personId = stuFactory.createReturnId(student);
@@ -168,7 +170,6 @@ public class LoginServlet extends HttpServlet {
 	    				teacher.setFirstName(ldapobject.getPrenom());
 	    				teacher.setLastName(ldapobject.getNomFamille());
 	    				teacher.setEmail(ldapobject.getMail());
-	    				teacher.setTelphone(ldapobject.getNumber());
 	    				teacher.setUserId(userId);
 	    				
 	    				System.out.println(teacher.toString());
