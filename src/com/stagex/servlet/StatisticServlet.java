@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.stagex.factory.CompanyDaoFactory;
 import com.stagex.factory.TeacherDaoFactory;
 
 /**
@@ -32,19 +33,23 @@ public class StatisticServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int a = 0;
 		int b = 0;
-		ArrayList<String> c;
+		ArrayList<String> c = null;
+		
 		try {
 			a = TeacherDaoFactory.salInternship();
 			b = TeacherDaoFactory.salJob();
-			c = TeacherDaoFactory.companyStudents();
-			request.setAttribute("avgSalInternship", a);
-			request.setAttribute("avgSalJob", b);
-			request.setAttribute("companyname", c);
+			c = CompanyDaoFactory.companyStudents();
+
+		
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
-		
+
+		request.setAttribute("avgSalInternship",a);
+		request.setAttribute("avgSalJob",b);
+		request.setAttribute("companyname",c);
+
 		this.getServletContext().getRequestDispatcher( "/reporting.jsp" ).forward( request, response );
 	}
 

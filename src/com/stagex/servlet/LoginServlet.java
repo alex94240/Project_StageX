@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.stagex.bean.Student;
+import com.stagex.bean.Teacher;
 import com.stagex.bean.WebUser;
 import com.stagex.factory.StudentDaoFactory;
+import com.stagex.factory.TeacherDaoFactory;
 import com.stagex.factory.WebUserDaoFactory;
 import com.stagex.ldap.LDAPObject;
 import com.stagex.ldap.LDAPaccess;
@@ -47,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 	
 		String type = null;
 		
-		LDAPaccess ldapaccess = new LDAPaccess();
+		/*LDAPaccess ldapaccess = new LDAPaccess();
 		LDAPObject ldapobject = null;
 		
 		try {
@@ -69,9 +71,9 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
-
+*/
 		//just for trying without LDAP connection
-		/*LDAPObject ldapobject = new LDAPObject("mcauche", "PsR/r7TJ", "Myléna Cauche", "Cauche", "Myléna", "student", "0601020304", "mylenacauche@gmail.com");
+		LDAPObject ldapobject = new LDAPObject("mcauche", "PsR/r7TJ", "Myléna Cauche", "Cauche", "Myléna", "student", "0601020304", "mylenacauche@gmail.com");
 		System.out.println(ldapobject.toString());
 
 		
@@ -83,21 +85,13 @@ public class LoginServlet extends HttpServlet {
 		WebUser currentUser;
 		WebUserDaoFactory userFactory = new WebUserDaoFactory();
 		
-		List<Student> students;
-		Student student;
-        StudentDaoFactory stuFactory = new StudentDaoFactory();
-        
 		int userId = -1;
-		int studentId = -1;
-		
+		int personId = -1;
+
 		try {
 			webUser = userFactory.findAllByConditions(sqlWhereUser, WebUser.class);
-			System.out.println("After finding web user");
-			System.out.println(webUser.toString());
 			
 			if(webUser.isEmpty()){
-				System.out.println("This user doesn't exist in this table");
-				System.out.println("So we create a new user");
 				currentUser = new WebUser();
 				currentUser.setLogin(login);
 				currentUser.setPassword(password);
@@ -111,12 +105,22 @@ public class LoginServlet extends HttpServlet {
 				currentUser = webUser.get(0);
 				userId = currentUser.getUserId();
 			}
-			System.out.println(userId);
+			
+
+			List<Student> students;
+			Student student;
+	        StudentDaoFactory stuFactory = new StudentDaoFactory();
+			
+	        List<Teacher> teachers;
+	        Teacher teacher; 
+	        TeacherDaoFactory teacherFactory = new TeacherDaoFactory();
+			
+			Map<String,Object> sqlWhereType = new HashMap<String, Object>();   
+			sqlWhereType.put("userId", userId);
+			
 			if(ldapobject.getType().equals("student")){
 				
-				Map<String,Object> sqlWhereStudent = new HashMap<String, Object>();   
-				sqlWhereStudent.put("userId", userId);
-    			students = stuFactory.findAllByConditions(sqlWhereStudent, Student.class);
+    			students = stuFactory.findAllByConditions(sqlWhereType, Student.class);
     			if(students.isEmpty()){    				
     				student= new Student();
     				
@@ -127,28 +131,51 @@ public class LoginServlet extends HttpServlet {
     				student.setUserId(userId);
     				
     				System.out.println(student.toString());
-    				stuFactory.create(student);
-    				
-    				studentId = student.getStudentId();
+    				personId = stuFactory.createReturnId(student);
+    			
     			}
     			else{
-    				studentId = students.get(0).getStudentId();
+    				personId = students.get(0).getStudentId();
     			}
-    			System.out.println("L'id de l'étudiant : " + studentId);
+    			System.out.println("L'id de l'étudiant : " + personId);
     			System.out.println("Le login de l'étudiant est : " + login);
-    			HttpSession session=request.getSession();  
-    	        session.setAttribute("login", login);
-    	        session.setAttribute("id", studentId);
-    	        session.setAttribute("usertype", type);
+			}
+			else if(ldapobject.getType().equals("teacher")){
+					
+    			teachers = teacherFactory.findAllByConditions(sqlWhereType, Teacher.class);
+    			if(teachers.isEmpty()){    				
+    				teacher= new Teacher();
+    				
+    				teacher.setFirstName(ldapobject.getPrenom());
+    				teacher.setLastName(ldapobject.getNomFamille());
+    				teacher.setEmail(ldapobject.getMail());
+    				teacher.setTelphone(ldapobject.getNumber());
+    				teacher.setUserId(userId);
+    				
+    				System.out.println(teacher.toString());
+    				personId = teacherFactory.createReturnId(teacher);
     			
-    			this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
+    			}
+    			else{
+    				personId = teachers.get(0).getTeacherId();
+    			}
+    			System.out.println("L'id de l'étudiant : " + personId);
+    			System.out.println("Le login de l'étudiant est : " + login);
     			
+			
 			}
 		}catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}*/
+		}
 		
+		HttpSession session=request.getSession();  
+        session.setAttribute("login", login);
+        session.setAttribute("id", personId);
+        session.setAttribute("usertype", type);
+		
+		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
+
 	}
 
 }
