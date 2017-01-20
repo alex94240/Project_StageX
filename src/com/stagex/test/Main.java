@@ -37,7 +37,8 @@ public class Main {
 		CompanyDaoFactory companyFact = new CompanyDaoFactory();
 		
 		try {
-			companyFact.createWithUncompleteObject(com);
+			int id = companyFact.createReturnId(com);
+			System.out.println(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
