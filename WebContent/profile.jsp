@@ -35,7 +35,7 @@
           </div>
           <div class="row">
             <div class="s12">
-              ${student.telphone}
+              	${student.telphone}
             </div>
           </div>
           <div class="row">
@@ -49,8 +49,8 @@
             <div class="col s4">
               <h4>${student.firstName}</h4>
             </div>
-            <div class="col s4">
-              <h4>${student.lastName }</h4>
+            <div class="col s8">
+              <h4>${student.lastName}</h4>
             </div>
           </div>
           <div class="row">

@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.stagex.bean.Student;
@@ -20,7 +23,7 @@ import com.stagex.factory.StudentDaoFactory;
 /**
  * Servlet implementation class Profile
  */
-@WebServlet("/Profile")
+@WebServlet("/ProfileServlet")
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,7 +41,21 @@ public class ProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		StudentDaoFactory studentBdd = new StudentDaoFactory();
-		Student student = studentBdd.getStudent(request); //je récupère dans la bdd l'étudiant qui est en cours de session 		
+		HttpSession session = request.getSession();
+		
+		System.out.println(session.getAttribute("userid"));
+		
+		Map<String,Object> sqlWhereStudent = new HashMap<String, Object>();   
+		int id = (int) session.getAttribute("userid");
+		Student student = null;
+		try {
+			student = studentBdd.find(id, Student.class);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Student student = studentBdd.getStudent(request); //je récupère dans la bdd l'étudiant qui est en cours de session 		
 		
 		
 		System.out.println(student.toString());
