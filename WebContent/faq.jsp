@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <title>Stage X - FAQ</title>
+  <title>Stage X - FAQ </title>
   <meta charset="utf-8">
   <!--Import Google Icon Font-->
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,20 +29,20 @@
           <div id="popout" class="section scrollspy">
             <ul class="collapsible popout collapsible-accordion" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header active"><i class="material-icons">subtitles</i>First</div>
-                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+                <div class="collapsible-header active"><i class="material-icons">subtitles</i>Comment trouver mon stage ?</div>
+                <div class="collapsible-body"><p>Plusieurs solutions s’offrent à vous : chercher sur internet (Indeed, L’Etudiant, JobTeaser etc…), se rendre dans les forums (Alliance+…), regarder les offres sur StageX. En effet de nombreuses entreprises postent régulièrement des offres de stages sur notre site.</p></div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">games</i>Second</div>
-                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+                <div class="collapsible-header"><i class="material-icons">games</i>Que faire une fois que j’ai trouvé mon stage ?</div>
+                <div class="collapsible-body"><p>Après vous être entendu avec votre futur employeur sur les termes du stage, veuillez remplir la demande de convention. Vous aurez besoin d’information relatives à l’entreprise dans laquelle vous allez travailler donc n’hésitez pas à demander les renseignements nécessaires à votre maitre de stage. La demande devra être validé par votre responsable de parcours, celle-ci doit donc rentrée dans le cadre de votre cursus à l’ISEP.</p></div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">library_books</i>Third</div>
-                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+                <div class="collapsible-header"><i class="material-icons">library_books</i>Que faire si je n’ai pas trouvé de stage ?</div>
+                <div class="collapsible-body"><p>Aller voir d’urgence Mr.Falconet, </p></div>
               </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">info</i>Fourth</div>
-                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+                <div class="collapsible-header"><i class="material-icons">info</i>Comment contacter un élève ?</div>
+                <div class="collapsible-body"><p>Il suffit d’appuyer sur le bouton de recherche, il permet de rechercher tous les inscrits sur le site Internet. Après avoir trouvé un élève, l’utilisateur pourra accéder au mail de l’élève et pourra le contacter avec sa propre messagerie.</p></div>
               </li>
             </ul>
           </div>
