@@ -36,30 +36,39 @@ public class ValidateApplyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//find all apply not validated by teacher 
-		Map<String,Object> sqlWhereMap = new HashMap<String, Object>();   
+		//find all apply not vaidated by teacher 
+		Map<String,Object> sqlWhereMap = new HashMap<String, Object>(); 
         sqlWhereMap.put("validate", null);
+
         
         List<Apply> applyList = null;
+        List<Student> studentName = null;
         ApplyDaoFactory applyFactory = new ApplyDaoFactory();
+        StudentDaoFactory studentFactory=new StudentDaoFactory();
         
 		try {			
 			applyList = applyFactory.findAllByConditions(sqlWhereMap, Apply.class);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}  
 		
 		if(!applyList.isEmpty()){
 			for(int i =0; i<applyList.size(); i++){
-				System.out.println(applyList.get(i).toString());
+					Map<String,Object> studentID = new HashMap<String, Object>();
+					studentID.put("studentId", applyList.get(i).getStudentId());
+					studentName= studentFactory.findAllByConditions(studentID, Student.class);
 			}
+		request.setAttribute("name",studentName);
 		}
+		
 		else{
-			System.out.println("Aucune demande de convention en cours de validation");
+			String erreur = "Aucune offre de stage à valider";
+			request.setAttribute("validateApply",erreur);
 		}
 		
 		request.setAttribute("applyList", applyList);
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		
 		this.getServletContext().getRequestDispatcher( "/validate-apply.jsp" ).forward( request, response );
 	}

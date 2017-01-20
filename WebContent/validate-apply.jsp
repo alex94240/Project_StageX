@@ -60,24 +60,33 @@
 
               </tr>
               <tr>
-                <td>Hélène ROGER</td>
-                <td>Alten</td>
-                <td>6 mois</td>
-                <td style="text-align:right">
+              <c:forEach items="${applyList}" var="apply">
+									<tr>
+										<td>${apply.studentId}</td>
+										<td><c:out value="${apply.salary}" /></td>
+										<td><c:out value="${apply.companyId}" /></td>
+			  
+										<td style="text-align:right">
                   <!-- Modal Trigger -->
-                  <a class="waves-effect waves-light btn btn-isep" href="#modal2">Voir</a>
+                  <a class="waves-effect waves-light btn btn-isep" href="#modal3">Voir</a>
 
                   <!-- Modal Structure -->
-                  <div id="modal2" class="modal">
+                  <div id="modal3" class="modal">
                     <div class="modal-content">
                       <h4>Modal Header</h4>
                       <p>A bunch of text</p>
                     </div>
                     <div class="modal-footer">
-                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                    	<!-- Copy this one !!!! -->
+                    	<button class=" modal-action modal-close waves-effect waves-green btn-flat" type="button" name="validate" value="1">Valider</button>
+                      <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Valider</a> -->
+                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">refuser</a>
                     </div>
                   </div>
                 </td>
+									</tr>
+								</c:forEach>
+						
               </tr>
               <tr>
                 <td>Myléna CAUCHE</td>

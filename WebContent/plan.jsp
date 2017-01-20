@@ -21,6 +21,12 @@
       <div class="row">
         <div class="col s6">
           <h4>Plan du site Internet</h4>
+          <ul><td> <a href="http://localhost:1234/Technoweb/Statistics">Suivi parcours</a> </td>	</ul>
+          <ul><td> <a href="http://localhost:1234/Technoweb/">Offres d'emplois et de stages</a> </td> </ul>
+ 
+          <ul> <td> <a href="http://localhost:1234/Technoweb/Apply">Demande de convention</a> </td> </ul>
+          <ul> <td> <a href="http://localhost:1234/Technoweb/Profile">Mon profil</a> </td> </ul>
+          <ul><td> <a href="http://localhost:1234/Technoweb/Research">Recherche</a> </td></ul>
         </div>
       </div>
     </main>
