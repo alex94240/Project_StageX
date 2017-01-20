@@ -147,6 +147,7 @@ public class LoginServlet extends HttpServlet {
 	    				student.setEmail(ldapobject.getMail());
 	    				student.setTelphone(ldapobject.getNumber());
 	    				student.setUserId(userId);
+	    				//student.setStudentNumber(ldapobject.ge);
 	    				
 	    				System.out.println(student.toString());
 	    				personId = stuFactory.createReturnId(student);
