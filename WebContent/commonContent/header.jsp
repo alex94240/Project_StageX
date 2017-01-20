@@ -10,7 +10,7 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="reporting.jsp">Suivi parcours</a></li>
           <li><a href="offers.jsp">Offres d'emplois et de stages</a></li>
-          <li><a href="apply-internship-agreement.jsp">Demande de convention</a></li>
+          <li><a href="apply-internship-agreement">Demande de convention</a></li>
           <li><a href="profile.jsp">Profil</a></li>
           <li><a href="index.jsp">Déconnexion</a></li>
           <li><a class="waves-effect waves-light btn btn-isep" href="research.jsp">Recherche</a></li>

@@ -125,19 +125,19 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="nom" type="text" class="validate" name="nom" value="">
+              <input id="nom" type="text" class="validate" name="nom" value="<%= request.getAttribute("prenom")%>" readonly>
               <label for="icon_prefix">Nom</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate" name="prenom">
+              <input id="icon_prefix" type="text" class="validate" name="prenom" value="<%= request.getAttribute("nom")%>" readonly>
               <label for="icon_prefix">Prénom</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">dialpad</i>
-              <input id="icon_prefix" type="text" class="validate" name="numOfSocialSecurity">
+              <input id="icon_prefix" type="text" class="validate" name="numOfSocialSecurity" value="<%= request.getAttribute("socialSnum")%>">
               <label for="icon_prefix">Numéro de sécurité sociale</label>
             </div>
           </div>
@@ -158,19 +158,23 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">email</i>
-              <input id="icon_prefix" type="text" class="validate" name="personEmail">
+              <input id="icon_prefix" type="text" class="validate" name="personEmail" value="<%= request.getAttribute("email")%>">
               <label for="icon_prefix">Adresse email</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">contact_phone</i>
-              <input id="icon_prefix" type="text" class="validate" name="personTelephone">
+              <input id="icon_prefix" type="text" class="validate" name="personTelephone" value="<%= request.getAttribute("telephone")%>">
               <label for="icon_prefix">Téléphone portable</label>
+            </div>
+            <div class="col s3 offset-s5">
+              <input type="button" style="padding:5px 15px;background-color: #fafafa; border:0 none;  cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; "
+               onclick="document.getElementById('enterprise').scrollIntoView();" value="Next">
             </div>
           </div>
           <hr>
           <div class="row">
             <div class="s2">
-              <h5>Entreprise</h5>
+              <h5 id="enterprise">Entreprise</h5>
             </div>
           </div>
           <div class="row">
@@ -282,11 +286,15 @@
               <input id="icon_prefix" type="text" class="validate" name="bossFax">
               <label for="icon_prefix">N° de FAX</label>
             </div>
+            <div class="col s3 offset-s5">
+              <input type="button" style="padding:5px 15px;background-color: #fafafa; border:0 none;  cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; "
+               onclick="document.getElementById('stage').scrollIntoView();" value="Next">
+            </div>
           </div>
           <hr>
           <div class="row">
             <div class="s2">
-              <h5>Stage</h5>
+              <h5 id="stage">Stage</h5>
             </div>
           </div>
           <div class="row">
