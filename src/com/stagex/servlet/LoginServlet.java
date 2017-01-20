@@ -148,8 +148,8 @@ public class LoginServlet extends HttpServlet {
 	    				student.setUserId(userId);
 	    				student.setStudentNumber(ldapobject.getNumber());
 	    				
-	    				
-	    				student.setPicture("http://storage.iseplive.fr/avatars/92/" + ldapobject.getNumber() + ".jpg");
+	    				String nb = ldapobject.getNumber().substring(0, 2);
+	    				student.setPicture("http://storage.iseplive.fr/avatars/"+ nb+ "/" + ldapobject.getNumber() + ".jpg");
 	    				
 	    				System.out.println(student.toString());
 	    				personId = stuFactory.createReturnId(student);
