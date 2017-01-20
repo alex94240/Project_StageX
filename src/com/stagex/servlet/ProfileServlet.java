@@ -37,15 +37,9 @@ public class ProfileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//StudentDaoFactory studentBdd = new StudentDaoFactory();
-		//Student student = studentBdd.getStudent(request); //je récupère dans la bdd l'étudiant qui est en cours de session 		
+		StudentDaoFactory studentBdd = new StudentDaoFactory();
+		Student student = studentBdd.getStudent(request); //je récupère dans la bdd l'étudiant qui est en cours de session 		
 		
-		Student student = new Student();
-		student.setFirstName("Mylena");
-		student.setLastName("Cauche");
-		student.setTelphone("0666666666");
-		student.setEmail("mylenacauche@gmail.com");
-		student.setPicture("http://storage.iseplive.fr/avatars/92/9215.jpg");
 		
 		System.out.println(student.toString());
 		

@@ -34,26 +34,31 @@ public class ApplyServlet extends HttpServlet {
     }
 
 	
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.getServletContext().getRequestDispatcher( "/apply-internship-agreement.jsp" ).forward( request, response );
+
+	}		
+		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Apply apply = new Apply();
 		ApplyDaoFactory applyFactory = new ApplyDaoFactory();
 		
 		//person information
 		String group = request.getParameter("group");
-  		String nom = request.getParameter("nom");
-  		String prenom = request.getParameter("prenom");
-    	String numOfSocialSecurity = request.getParameter("numOfSocialSecurity");
-    	String parcours = request.getParameter("parcours");
-    	String personAddress = request.getParameter("personAddress");
-    	String personEmail = request.getParameter("personEmail");
-    	String personTelephone = request.getParameter("personTelephone");
-    	
-    	Map<String,Object> sqlWhereMap = new HashMap<String, Object>();   
-        sqlWhereMap.put("socialSecruityNum", numOfSocialSecurity);
-        List<Student> stus;
-        StudentDaoFactory stuFactory = new StudentDaoFactory();
-        int studentId = -1;
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
+		String numOfSocialSecurity = request.getParameter("numOfSocialSecurity");
+		String parcours = request.getParameter("parcours");
+		String personAddress = request.getParameter("personAddress");
+		String personEmail = request.getParameter("personEmail");
+		String personTelephone = request.getParameter("personTelephone");
+		
+		Map<String,Object> sqlWhereMap = new HashMap<String, Object>();   
+	    sqlWhereMap.put("socialSecruityNum", numOfSocialSecurity);
+	    List<Student> stus;
+	    StudentDaoFactory stuFactory = new StudentDaoFactory();
+	    int studentId = -1;
 		try {			
 			stus = stuFactory.findAllByConditions(sqlWhereMap, Student.class);
 			studentId = stus.get(0).getStudentId();
@@ -61,58 +66,58 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
-    	
-    	apply.setStudentId(studentId);
-
-    	//company information
-    	String companyName = request.getParameter("companyName");
-    	String siretNum = request.getParameter("siretNum");
-    	String CodeAPE = request.getParameter("CodeAPE");
-    	String companyAddress = request.getParameter("companyAddress");
-    	String receptionName = request.getParameter("receptionName");  		
-  		String companyFax = request.getParameter("companyFax");
-  		String companyEmail = request.getParameter("companyEmail");
-  		String companyTelephone = request.getParameter("companyTelephone");
-  		
-  		Company company = new Company();
-  		company.setCompanyName(companyName);
-  		company.setSiretNumber(siretNum);
-  		company.setCodeApe(CodeAPE);
-  		company.setCompanyAddress(companyAddress);
-  		company.setReceptionName(receptionName);
-  		company.setFax(companyFax);
-  		company.setEmail(companyEmail);
-  		company.setTelphone(companyTelephone);
-  		CompanyDaoFactory companyFact = new CompanyDaoFactory();
-  		
-  		//apply information
-    	String chargeContact = request.getParameter("chargeContact");
-  		String applyAddress = request.getParameter("applyAddress");
-    	String applyPhone = request.getParameter("applyPhone");    	
-    	
-    	String description = request.getParameter("description");
-    	String startDate = request.getParameter("startDate");
-    	String endDate = request.getParameter("endDate");
-    	String salary = request.getParameter("salary");
-    	String benefit = request.getParameter("benefit");
-    	String healthInsurance = request.getParameter("healthInsurance");
-    	String workTrip = request.getParameter("workTrip");
-    	String wayFindApply = request.getParameter("wayFindApply");
-    	
-    	String bossNom = request.getParameter("bossNom");
-    	String bossPrenom = request.getParameter("bossPrenom");
-  		String bossEmail = request.getParameter("bossEmail");
-  		String bossJob = request.getParameter("bossJob");
-    	String bossTelephone = request.getParameter("bossTelephone");
-    	String bossFax = request.getParameter("bossFax");
-
-    	String prestation = request.getParameter("prestation");
-    	String contast = request.getParameter("contast");
-    	String applyGoal = request.getParameter("applyGoal");
-    	String pricipleSteps = request.getParameter("pricipleSteps");
-    	String applyRequirement = request.getParameter("applyRequirement");
-    	
-    	//System.out.println(prestation);
+		
+		apply.setStudentId(studentId);
+	
+		//company information
+		String companyName = request.getParameter("companyName");
+		String siretNum = request.getParameter("siretNum");
+		String CodeAPE = request.getParameter("CodeAPE");
+		String companyAddress = request.getParameter("companyAddress");
+		String receptionName = request.getParameter("receptionName");  		
+		String companyFax = request.getParameter("companyFax");
+		String companyEmail = request.getParameter("companyEmail");
+		String companyTelephone = request.getParameter("companyTelephone");
+		
+		Company company = new Company();
+		company.setCompanyName(companyName);
+		company.setSiretNumber(siretNum);
+		company.setCodeApe(CodeAPE);
+		company.setCompanyAddress(companyAddress);
+		company.setReceptionName(receptionName);
+		company.setFax(companyFax);
+		company.setEmail(companyEmail);
+		company.setTelphone(companyTelephone);
+		CompanyDaoFactory companyFact = new CompanyDaoFactory();
+		
+		//apply information
+		String chargeContact = request.getParameter("chargeContact");
+		String applyAddress = request.getParameter("applyAddress");
+		String applyPhone = request.getParameter("applyPhone");    	
+		
+		String description = request.getParameter("description");
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+		String salary = request.getParameter("salary");
+		String benefit = request.getParameter("benefit");
+		String healthInsurance = request.getParameter("healthInsurance");
+		String workTrip = request.getParameter("workTrip");
+		String wayFindApply = request.getParameter("wayFindApply");
+		
+		String bossNom = request.getParameter("bossNom");
+		String bossPrenom = request.getParameter("bossPrenom");
+		String bossEmail = request.getParameter("bossEmail");
+		String bossJob = request.getParameter("bossJob");
+		String bossTelephone = request.getParameter("bossTelephone");
+		String bossFax = request.getParameter("bossFax");
+	
+		String prestation = request.getParameter("prestation");
+		String contast = request.getParameter("contast");
+		String applyGoal = request.getParameter("applyGoal");
+		String pricipleSteps = request.getParameter("pricipleSteps");
+		String applyRequirement = request.getParameter("applyRequirement");
+		
+		//System.out.println(prestation);
 		apply.setChargePersonContact(chargeContact);
 		apply.setApplyAddress(applyAddress);
 		apply.setApplyTelphone(applyPhone);
@@ -159,10 +164,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		 response.sendRedirect("/home.jsp");
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
-	}
-
 }
+
+
