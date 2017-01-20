@@ -10,9 +10,21 @@ import com.stagex.factory.StudentDaoFactory;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		StudentDaoFactory stuFactory = new StudentDaoFactory();
+		
+		
+		Student student= new Student();
+		
+		student.setFirstName("jiajie");
+		student.setUserId(1);
+		
+		
+		student.setPicture("http://storage.iseplive.fr/avatars/92/.jpg");
+		
+		int personId = stuFactory.createReturnId(student);
+		System.out.println(personId);
 		
 		/* 
 		//create a new record		 
@@ -30,7 +42,7 @@ public class Main {
 		stu.setTelphone(null);
 		stu.setUserId(1);
 		stu.setStudentId(100);
-		*/
+		
 		
 		Company com = new Company();
 		com.setCompanyName("TestLee");
@@ -42,7 +54,7 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
-		
+		*/
 		
 		
 		/* 

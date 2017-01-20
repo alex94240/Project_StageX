@@ -36,8 +36,8 @@ public class ApplyPrefillTableServlet extends HttpServlet {
 		//System.out.println("servlet mapping test");
 		HttpSession session = request.getSession();
 		int userId = -2;
-		userId = (int) session.getAttribute("id");
-		System.out.println(userId);
+		userId = (int) session.getAttribute("userid");
+		System.out.println("Id: "+userId);
 		
 		StudentDaoFactory stuFactory = new StudentDaoFactory();
 		String firstName = "";
@@ -47,7 +47,8 @@ public class ApplyPrefillTableServlet extends HttpServlet {
 		
 		try {
 			
-			Student findStu = stuFactory.find(userId,Student.class);
+			Student findStu = new Student();
+			findStu = stuFactory.find(userId,Student.class);
 			firstName = findStu.getFirstName();
 			lastName = findStu.getLastName();
 			telephone = findStu.getTelphone();
