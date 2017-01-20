@@ -310,9 +310,17 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 			} else if (field.isAnnotationPresent(Column.class)) {
 				fieldNames.append(field.getAnnotation(Column.class).value()).append(",");
 				fieldValues.add(pd.getReadMethod().invoke(t));
+			}
+			
+			if(field.isAnnotationPresent(Column.class) && pd.getReadMethod().invoke(t) != null){
 				sqlWhereMap.put(field.getAnnotation(Column.class).value(), pd.getReadMethod().invoke(t));
 			}
-			placeholders.append("?").append(",");
+			
+			if(pd.getReadMethod().invoke(t) == null){
+            	placeholders.append("null").append(",");
+            }else{
+            	placeholders.append("?").append(",");
+            } 
 		}
 
 		fieldNames.deleteCharAt(fieldNames.length() - 1);
