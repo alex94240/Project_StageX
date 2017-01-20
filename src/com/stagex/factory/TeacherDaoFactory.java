@@ -24,7 +24,7 @@ public class TeacherDaoFactory extends GenericDaoImpl<Teacher> {
 		int a = 0;
 		while (resultat.next()){
 			a=resultat.getInt("avg(salary)");
-			
+			System.out.println("Le salaire moyen des élèves en stage est:"+a);
 		}
 		resultat.close();
 		return a;
@@ -37,13 +37,13 @@ public class TeacherDaoFactory extends GenericDaoImpl<Teacher> {
 		Statement statement = (Statement) conn.createStatement();
 		ResultSet resultat = statement.executeQuery( "SELECT avg(salary) FROM "
 				+ "stagex.experience;");
-		int a=0;
+		int a = 0;
 		while (resultat.next()){
 			a=resultat.getInt("avg(salary)");
 		}
 		resultat.close();
-		return a;
+		
+	return a;
 	}
-	
 	
 }
