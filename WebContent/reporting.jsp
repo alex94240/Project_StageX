@@ -37,14 +37,13 @@
                 	<span class="numbers center">${avgSalJob}</span>  
                 </li>
                 <li>Compagnies acceuillant les etudiants en stage : </li>
-						<table>
-							<c:forEach items="${companyname}" var="companyname">
-								<tr>
-									<td>${companyname}</td>
-									<td><c:out value="${companyname}" /></td>
-								</tr>
+						<ul>
+							<c:forEach items="${companynames}" var="companyname">
+								
+									<li><c:out value="${companyname}" /></li>
+								
 							</c:forEach>
-						</table>
+						
 					</ul>
           </div>
           

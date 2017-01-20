@@ -12,24 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.stagex.factory.CompanyDaoFactory;
 import com.stagex.factory.TeacherDaoFactory;
 
-/**
- * Servlet implementation class Statistics
- */
+
 @WebServlet("/Statistics")
 public class StatisticServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+  
     public StatisticServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int a = 0;
 		int b = 0;
@@ -48,14 +41,12 @@ public class StatisticServlet extends HttpServlet {
 
 		request.setAttribute("avgSalInternship",a);
 		request.setAttribute("avgSalJob",b);
-		request.setAttribute("companyname",c);
+		request.setAttribute("companynames",c);
 
 		this.getServletContext().getRequestDispatcher( "/reporting.jsp" ).forward( request, response );
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
