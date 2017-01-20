@@ -40,7 +40,7 @@ public class Offer {
 	private String loction;
 
 	@Column("salary")
-	private String salary;
+	private int salary;
 
 	@Column("duration")
 	private String duration;
@@ -146,11 +146,11 @@ public class Offer {
 		this.loction = loction;
 	}
 
-	public String getSalary() {
+	public int getSalary() {
 		return salary;
 	}
 
-	public void setSalary(String salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
 

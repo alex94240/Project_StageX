@@ -52,7 +52,31 @@
 				</c:forEach>
 
 			</tbody>
-		</table></div>
+			
+			<table class="highlight responsive-table" id="studentsSearchByCompany">
+			<thead>
+				<tr>
+					<th>ContactPrenom</th>
+					<th>ContactNom</th>
+					<th>Email</th>
+					<th>Type</th>
+					<th>Title</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="offer" items="${offers}">
+					<tr>
+						<td><c:out value="${offer.contactFirstName}" /></td>
+						<td><c:out value="${offer.contactLastName}" /></td>
+						<td><c:out value="${offer.email}" /></td>
+						<td><c:out value="${offer.job}" /></td>
+						<td><c:out value="${offer.title}" /></td>
+					</tr>
+				</c:forEach>
+
+			</tbody>
+		</table>
+		</div>
     </main>
   </div>
 

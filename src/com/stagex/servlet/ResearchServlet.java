@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.stagex.bean.Offer;
 import com.stagex.bean.Student;
+import com.stagex.factory.OfferDaoFactory;
 import com.stagex.factory.StudentDaoFactory;
 
 /**
@@ -38,8 +40,13 @@ public class ResearchServlet extends HttpServlet {
 		
 		StudentDaoFactory stufactory = new StudentDaoFactory();
 		List<Student> students = new ArrayList<Student>();
+		
+		OfferDaoFactory offerFact = new OfferDaoFactory();
+		List<Offer> offers = new ArrayList<Offer>();
+		
 		try {
 			students = stufactory.searchStudentBycompany(keyword);
+			offers = offerFact.searchOfferByComapny(keyword);
 			/*
 			for(int i = 0; i< students.size(); i++){
 				Student temp = students.get(i);
@@ -55,6 +62,8 @@ public class ResearchServlet extends HttpServlet {
 			}
 			*/
 			request.setAttribute("students",students);
+			request.setAttribute("offers",offers);
+			
 			RequestDispatcher view = getServletContext().getRequestDispatcher("/researchResult.jsp"); 
 			view.forward(request,response); 
 			
