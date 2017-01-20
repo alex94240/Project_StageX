@@ -1,28 +1,23 @@
-package com.stagex.servlet;
+package test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.stagex.factory.CompanyDaoFactory;
-import com.stagex.factory.TeacherDaoFactory;
-
 /**
- * Servlet implementation class Statistics
+ * Servlet implementation class Testing
  */
-@WebServlet("/Statistics")
-public class StatisticServlet extends HttpServlet {
+@WebServlet("/Testing")
+public class Testing extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StatisticServlet() {
+    public Testing() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,26 +26,8 @@ public class StatisticServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int a = 0;
-		int b = 0;
-		ArrayList<String> c = null;
-		
-		try {
-			a = TeacherDaoFactory.salInternship();
-			b = TeacherDaoFactory.salJob();
-			c = CompanyDaoFactory.companyStudents();
-
-		
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-
-		request.setAttribute("avgSalInternship",a);
-		request.setAttribute("avgSalJob",b);
-		request.setAttribute("companyname",c);
-
-		this.getServletContext().getRequestDispatcher( "/reporting.jsp" ).forward( request, response );
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: eee ").append(request.getContextPath());
 	}
 
 	/**

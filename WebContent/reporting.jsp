@@ -30,20 +30,28 @@
           <div class="stats">
             <!-- TODO : statistics pie charts (camembert) -->
             <ul>
-                <li>Salaire moyen des étudiants en entreprise :<br>
-                	<span class="numbers center">${avgSalInternship}</span>  <!-- ${avgSalInternship} -->
+                <li>Salaire moyen des étudiants en stage :<br>
+                	<span class="numbers center">${avgSalInternship}</span> 
                 </li>
-                <li>Statistique 2<span class="percent v30">30 %</span></li>
-                <li>Statistique 3<span class="percent v100">100 %</span></li>
-            </ul>
+                <li>Salaire moyen des étudiants en entreprise :<br>
+                	<span class="numbers center">${avgSalJob}</span>  
+                </li>
+                <li>Compagnies acceuillant les etudiants en stage : </li>
+						<table>
+							<c:forEach items="${companyname}" var="companyname">
+								<tr>
+									<td>${companyname}</td>
+									<td><c:out value="${companyname}" /></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</ul>
           </div>
-          <span>Statistique 4</span>
-          <div class="pie"></div>
+          
         </div>
       </div>
     </main>
   </div>
-
 <%@ include file="commonContent/footer.jsp" %>
 
   <!--Import jQuery before materialize.js-->

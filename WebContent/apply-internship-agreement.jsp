@@ -9,7 +9,7 @@
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="css/master.css" media="screen" title="no title">
@@ -89,7 +89,7 @@
       </div>
       
       <div class="row card-panel">
-        <form class="col s12" action="supplementary-apply.jsp">
+        <form class="col s12" action="supplementary-apply.jsp" id="localStorage">
           <div class="row">
             <div class="input-field col s2">
               <p>
@@ -125,19 +125,19 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate" name="nom">
+              <input id="nom" type="text" class="validate" name="nom" value="<%= request.getAttribute("prenom")%>" readonly>
               <label for="icon_prefix">Nom</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate" name="prenom">
+              <input id="icon_prefix" type="text" class="validate" name="prenom" value="<%= request.getAttribute("nom")%>" readonly>
               <label for="icon_prefix">Prénom</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">dialpad</i>
-              <input id="icon_prefix" type="text" class="validate" name="numOfSocialSecurity">
+              <input id="icon_prefix" type="text" class="validate" name="numOfSocialSecurity" value="">
               <label for="icon_prefix">Numéro de sécurité sociale</label>
             </div>
           </div>
@@ -158,19 +158,23 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">email</i>
-              <input id="icon_prefix" type="text" class="validate" name="personEmail">
+              <input id="icon_prefix" type="text" class="validate" name="personEmail" value="<%= request.getAttribute("email")%>">
               <label for="icon_prefix">Adresse email</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">contact_phone</i>
-              <input id="icon_prefix" type="text" class="validate" name="personTelephone">
+              <input id="icon_prefix" type="text" class="validate" name="personTelephone" value="<%= request.getAttribute("telephone")%>">
               <label for="icon_prefix">Téléphone portable</label>
+            </div>
+            <div class="col s3 offset-s5">
+              <input type="button" style="padding:5px 15px;background-color: #fafafa; border:0 none;  cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; "
+               onclick="document.getElementById('enterprise').scrollIntoView();" value="Next">
             </div>
           </div>
           <hr>
           <div class="row">
             <div class="s2">
-              <h5>Entreprise</h5>
+              <h5 id="enterprise">Entreprise</h5>
             </div>
           </div>
           <div class="row">
@@ -282,11 +286,15 @@
               <input id="icon_prefix" type="text" class="validate" name="bossFax">
               <label for="icon_prefix">N° de FAX</label>
             </div>
+            <div class="col s3 offset-s5">
+              <input type="button" style="padding:5px 15px;background-color: #fafafa; border:0 none;  cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; "
+               onclick="document.getElementById('stage').scrollIntoView();" value="Next">
+            </div>
           </div>
           <hr>
           <div class="row">
             <div class="s2">
-              <h5>Stage</h5>
+              <h5 id="stage">Stage</h5>
             </div>
           </div>
           <div class="row">
@@ -379,18 +387,45 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
 
-  <script type="text/javascript">
-  $('.datepicker').pickadate({
-  selectMonths: true, // Creates a dropdown to control month
-  selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-  </script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-  $('.modal').modal();
-  });
-  </script>
+	<script type="text/javascript">
+		$('.datepicker').pickadate({
+			selectMonths : true, // Creates a dropdown to control month
+			selectYears : 15
+		// Creates a dropdown of 15 years to control year
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+			$('.modal').modal();
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			function init() {
+				var inputs = document.getElementsByTagName('input');
+				for(var i=0; i<inputs.length; i++){
+				    if(localStorage[$(inputs[i]).attr('name')]){
+				    	//alert(localStorage[$(inputs[i]).attr('name')]);
+				    	$(inputs[i]).val(localStorage[$(inputs[i]).attr('name')]);
+				    }
+				 }
+			}
+			init();
+		});
+
+		$(':input').change(function() {
+			//alert($(this).attr('name'));
+			localStorage[$(this).attr('name')] = $(this).val();
+			//var t = localStorage[$(this).attr('name')];
+			//alert(t);
+		});
+
+		$('#localStorage').submit(function() {
+			localStorage.clear();
+		});
+	</script>
 
 </body>
 </html>

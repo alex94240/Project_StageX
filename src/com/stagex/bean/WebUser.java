@@ -7,7 +7,7 @@ public class WebUser {
 	@Id("userId")
 	private int userId;
 	
-	@Id("login")
+	@Column("login")
 	private String login;
 	
 	@Column("password")
@@ -35,6 +35,11 @@ public class WebUser {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "WebUser [userId=" + userId + ", login=" + login + ", password=" + password + "]";
 	}
 	
 	

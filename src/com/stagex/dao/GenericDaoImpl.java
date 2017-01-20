@@ -68,6 +68,62 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         System.out.println(sql + "\n" + clazz.getSimpleName() + "create succ");	
 	}
 
+	
+	
+	
+	public void createWithUncompleteObject(T t) throws Exception {
+		
+		Class<?> clazz = t.getClass();  
+        
+        String tableName = getTableName(clazz);  
+        
+        StringBuilder fieldNames = new StringBuilder();     
+        List<Object> fieldValues = new ArrayList<Object>(); 
+        StringBuilder placeholders = new StringBuilder();  
+        Field[] fields = clazz.getDeclaredFields(); 
+        
+        for (Field field : fields) {  
+            PropertyDescriptor pd = new PropertyDescriptor(field.getName(),t.getClass());  
+            if (field.isAnnotationPresent(Id.class)) {  
+                fieldNames.append(field.getAnnotation(Id.class).value()).append(",");  
+                fieldValues.add(pd.getReadMethod().invoke(t));  
+            } else if(field.isAnnotationPresent(Column.class)) {  
+                fieldNames.append(field.getAnnotation(Column.class).value()).append(",");  
+                fieldValues.add(pd.getReadMethod().invoke(t));  
+            }
+            
+            if(pd.getReadMethod().invoke(t) == null){
+            	placeholders.append("null").append(",");
+            }else{
+            	placeholders.append("?").append(",");
+            }  
+        }  
+         
+        fieldNames.deleteCharAt(fieldNames.length()-1);  
+        placeholders.deleteCharAt(placeholders.length()-1);  
+          
+         
+        StringBuilder sql = new StringBuilder("");  
+        sql.append("insert into ").append(tableName)  
+           .append(" (").append(fieldNames.toString())  
+           .append(") values (").append(placeholders).append(")") ; 
+        DatabaseConnection dbConn = new DatabaseConnection();
+        PreparedStatement ps = dbConn.getConnection().prepareStatement(sql.toString());  
+         
+        setParameter(fieldValues, ps, false);  
+        
+        ps.execute();  
+        dbConn.close();
+          
+        System.out.println(sql + "\n" + clazz.getSimpleName() + "create succ");	
+	}
+
+	
+	
+	
+	
+	
+	
 	@Override
 	public void delete(Object id, Class<T> clazz) throws Exception {
 
@@ -412,32 +468,36 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     private void setParameter(List<Object> values, PreparedStatement ps, boolean isSearch)  
             throws SQLException {  
         for (int i = 1; i <= values.size(); i++) {  
-            Object fieldValue = values.get(i-1);  
-            Class<?> clazzValue = fieldValue.getClass();  
-            if (clazzValue == String.class) {  
-                if (isSearch)   
-                    ps.setString(i, "%" + (String)fieldValue + "%");  
-                else  
-                    ps.setString(i,(String)fieldValue);  
-                      
-            } else if (clazzValue == boolean.class || clazzValue == Boolean.class) {  
-                ps.setBoolean(i, (Boolean)fieldValue);  
-            } else if (clazzValue == byte.class || clazzValue == Byte.class) {  
-                ps.setByte(i, (Byte)fieldValue);  
-            } else if (clazzValue == char.class || clazzValue == Character.class) {  
-                ps.setObject(i, fieldValue,Types.CHAR);  
-            } else if (clazzValue == Date.class) {  
-                ps.setTimestamp(i, new Timestamp(((Date) fieldValue).getTime()));  
-            } else if (clazzValue.isArray()) {  
-                Object[] arrayValue = (Object[]) fieldValue;  
-                StringBuffer sb = new StringBuffer();  
-                for (int j = 0; j < arrayValue.length; j++) {  
-                    sb.append(arrayValue[j]).append("¡¢");  
-                }  
-                ps.setString(i, sb.deleteCharAt(sb.length()-1).toString());  
-            } else {  
-                ps.setObject(i, fieldValue, Types.NUMERIC);  
-            }  
+            Object fieldValue = values.get(i-1); 
+			if (fieldValue == null) {
+				
+			} else {
+				Class<?> clazzValue = fieldValue.getClass();
+				if (clazzValue == String.class) {
+					if (isSearch)
+						ps.setString(i, "%" + (String) fieldValue + "%");
+					else
+						ps.setString(i, (String) fieldValue);
+
+				} else if (clazzValue == boolean.class || clazzValue == Boolean.class) {
+					ps.setBoolean(i, (Boolean) fieldValue);
+				} else if (clazzValue == byte.class || clazzValue == Byte.class) {
+					ps.setByte(i, (Byte) fieldValue);
+				} else if (clazzValue == char.class || clazzValue == Character.class) {
+					ps.setObject(i, fieldValue, Types.CHAR);
+				} else if (clazzValue == Date.class) {
+					ps.setTimestamp(i, new Timestamp(((Date) fieldValue).getTime()));
+				} else if (clazzValue.isArray()) {
+					Object[] arrayValue = (Object[]) fieldValue;
+					StringBuffer sb = new StringBuffer();
+					for (int j = 0; j < arrayValue.length; j++) {
+						sb.append(arrayValue[j]).append("¡¢");
+					}
+					ps.setString(i, sb.deleteCharAt(sb.length() - 1).toString());
+				} else {
+					ps.setObject(i, fieldValue, Types.NUMERIC);
+				}
+			}
         }  
     }  
 
