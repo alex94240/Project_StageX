@@ -118,3 +118,7 @@ div.stats .percent {
 .center{
 	text-align : center;
 }
+
+.error{
+	color : red;
+}

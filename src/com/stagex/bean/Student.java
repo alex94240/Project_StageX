@@ -45,6 +45,9 @@ public class Student {
 	
 	@Column("socialSecruityNum")
 	private String socialSecruityNum;
+	
+	@Column("studentNumber")
+	private String studentNumber;
 
 	public int getStudentId() {
 		return studentId;
@@ -142,6 +145,14 @@ public class Student {
 		this.socialSecruityNum = socialSecruityNum;
 	}
 	
+	public String getStudentNumber() {
+		return studentNumber;
+	}
+
+	public void setStudentNumber(String studentNumber) {
+		this.studentNumber = studentNumber;
+	}
+
 	public String toString(){
 		String res = "";
 		res += "studentId: " + getStudentId();
@@ -156,6 +167,7 @@ public class Student {
 		res += " cv: " + getCv();
 		res += " picture: " + getPicture();
 		res += " socialSecruityNum: " + getSocialSecruityNum();
+		res += " studentNumber " + getStudentNumber();
 		return res;
 	}
 

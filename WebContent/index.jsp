@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,6 +28,14 @@
               <img class="activator" src="img/isep.png">
             </div>
             <div class="row">
+            
+            	<c:if test="${!empty erreur}">
+            		<div class="input-field col s10 offset-s1 error">
+                		${erreur}
+                	</div>
+                </c:if>
+                
+            </div>
               <div class="input-field col s10 offset-s1">
                 <i class="material-icons prefix">perm_identity</i>
                 <input id="icon_prefix" type="text" name="login" class="validate">
