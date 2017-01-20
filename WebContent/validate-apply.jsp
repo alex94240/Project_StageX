@@ -65,7 +65,7 @@
 										<td>${apply.studentId}</td>
 										<td><c:out value="${apply.salary}" /></td>
 										<td><c:out value="${apply.companyId}" /></td>
-										
+			  
 										<td style="text-align:right">
                   <!-- Modal Trigger -->
                   <a class="waves-effect waves-light btn btn-isep" href="#modal3">Voir</a>

@@ -109,7 +109,7 @@
       </div>
       <div class="row">
         <div class="col s4 offset-s4">
-          <a class="waves-effect waves-light btn btn-isep" href="post-offer.jsp"><i class="material-icons left">email</i>Postuler une offre</a>
+          <a class="waves-effect waves-light btn btn-isep" href="post-offer.jsp"><i class="material-icons left">email</i>Poster une offre</a>
         </div>
       </div>
     </main>
