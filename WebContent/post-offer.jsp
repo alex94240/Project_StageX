@@ -26,7 +26,8 @@
         </div>
       </div>
       <div class="row card-panel">
-        <form class="col s12">
+      
+        <form class="col s12" action="PostOffer" method="get">
           <div class="row">
             <div class="input-field col s2">
               <p>
@@ -54,6 +55,7 @@
             </div>
           </div><br>
           <hr>
+          
           <div class="row">
             <div class="col s2">
               <h5>Entreprise</h5>
@@ -62,19 +64,19 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="nom">
               <label for="icon_prefix">Nom entreprise</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="liendusiteInternet">
               <label for="icon_prefix">Lien du site Internet</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">mode_edit</i>
-              <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+              <textarea id="icon_prefix2" class="materialize-textarea" name="description"></textarea>
               <label for="icon_prefix2">Description entreprise</label>
             </div>
           </div>
@@ -86,24 +88,24 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="nom_contact">
               <label for="icon_prefix">Nom contact</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="prenom_contact">
               <label for="icon_prefix">Prénom contact</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="email">
               <label for="icon_prefix">Email</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="post">
               <label for="icon_prefix">Poste</label>
             </div>
           </div>
@@ -115,51 +117,51 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="titre_offer">
               <label for="icon_prefix">Titre de l'offre</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">mode_edit</i>
-              <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+              <textarea id="icon_prefix2" class="materialize-textarea" name="description_offer"></textarea>
               <label for="icon_prefix2">Description de l'offre</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">mode_edit</i>
-              <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+              <textarea id="icon_prefix2" class="materialize-textarea" name="description_profile"></textarea>
               <label for="icon_prefix2">Description du profil recherché</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">mode_edit</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="lieu_offer">
               <label for="icon_prefix2">Lieu de l'offre</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">mode_edit</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="renumeration">
               <label for="icon_prefix2">Rénumération</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">mode_edit</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="complete_research">
               <label for="icon_prefix2">Compétences recherchées</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">mode_edit</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" name="duration_offer">
               <label for="icon_prefix2">Durée de l'offre</label>
             </div>
-          </div>
+          </div>          
           <div class="row">
             <div class="col s3 offset-s5">
-              <a class="waves-effect waves-light btn btn-isep"><i class="material-icons left">email</i>Envoyer</a>
+            <i class="material-icons left"></i><input class="waves-effect waves-light btn btn-isep" type="submit" name="submit" value="Envoyer">
             </div>
           </div>
         </form>
