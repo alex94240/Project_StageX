@@ -36,7 +36,7 @@ public class ValidateApplyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//find all apply not vaidated by teacher 
+		//find all apply not validated by teacher 
 		Map<String,Object> sqlWhereMap = new HashMap<String, Object>();   
         sqlWhereMap.put("validate", null);
         
