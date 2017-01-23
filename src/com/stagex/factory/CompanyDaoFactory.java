@@ -26,7 +26,7 @@ public class CompanyDaoFactory extends GenericDaoImpl<Company>{
 				companies.add(a);
 			}
 			resultat.close();
-			System.out.println(companies.get(0));
+			
 			
 			return companies;
 		}	
