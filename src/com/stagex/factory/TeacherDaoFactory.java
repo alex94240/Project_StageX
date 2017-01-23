@@ -19,12 +19,11 @@ public class TeacherDaoFactory extends GenericDaoImpl<Teacher> {
 		DatabaseConnection dbConn = new DatabaseConnection();
 		Connection conn= dbConn.getConnection();
 		Statement statement = conn.createStatement();
-		ResultSet resultat = statement.executeQuery( "SELECT avg(salary) FROM stagex.apply"
-				+ "WHERE validate='true';");
+		ResultSet resultat = statement.executeQuery( "SELECT avg(salary) FROM apply WHERE validate=1;");
 		int a = 0;
 		while (resultat.next()){
 			a=resultat.getInt("avg(salary)");
-			System.out.println("Le salaire moyen des élèves en stage est:"+a);
+		
 		}
 		resultat.close();
 		return a;
