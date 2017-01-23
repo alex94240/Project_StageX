@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,39 +33,18 @@
               <tr>
                   <th data-field="id">Élève</th>
                   <th data-field="name">Société</th>
-                  <th data-field="price">Durée</th>
+                  <th data-field="price">Début</th>
               </tr>
             </thead>
 
             <tbody>
+              
               <tr>
-                <td>Victor ELY</td>
-                <td>Exxon Mobile</td>
-                <td>6 mois</td>
-                <td style="text-align:right">
-                  <!-- Modal Trigger -->
-                  <a class="waves-effect waves-light btn btn-isep" href="#modal1">Voir</a>
-
-                  <!-- Modal Structure -->
-                  <div id="modal1" class="modal">
-                    <div class="modal-content">
-                      <h4>Modal Header</h4>
-                      <p>A bunch of text</p>
-                    </div>
-                    <div class="modal-footer">
-                    	<button class=" modal-action modal-close waves-effect waves-green btn-flat" type="button"></button>
-                      <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
-                    </div>
-                  </div>
-                </td>
-
-              </tr>
-              <tr>
-              <c:forEach items="${applyList}" var="apply">
+              <c:forEach items="${apply}" var="apply">
 									<tr>
-										<td>${apply.studentId}</td>
-										<td><c:out value="${apply.salary}" /></td>
-										<td><c:out value="${apply.companyId}" /></td>
+										<td>${apply.bossFax}  ${apply.applyRequirement}   </td>
+										<td><c:out value="${apply.pricipleSteps}" /></td>
+										<td><c:out value="${apply.startDate}" /></td>
 			  
 										<td style="text-align:right">
                   <!-- Modal Trigger -->
@@ -73,8 +53,9 @@
                   <!-- Modal Structure -->
                   <div id="modal3" class="modal">
                     <div class="modal-content">
-                      <h4>Modal Header</h4>
-                      <p>A bunch of text</p>
+                      <h4>Description du stage</h4>
+                      <p>${apply.decription}</p>
+                      <p>${apply.applyGoal}</p>
                     </div>
                     <div class="modal-footer">
                     	<!-- Copy this one !!!! -->
@@ -88,29 +69,7 @@
 								</c:forEach>
 						
               </tr>
-              <tr>
-                <td>Myléna CAUCHE</td>
-                <td>EY</td>
-                <td>5 mois</td>
-                <td style="text-align:right">
-                  <!-- Modal Trigger -->
-                  <a class="waves-effect waves-light btn btn-isep" href="#modal3">Voir</a>
-
-                  <!-- Modal Structure -->
-                  <div id="modal3" class="modal">
-                    <div class="modal-content">
-                      <h4>Modal Header</h4>
-                      <p>A bunch of text</p>
-                    </div>
-                    <div class="modal-footer">
-                    	<!-- Copy this one !!!! -->
-                    	<button class=" modal-action modal-close waves-effect waves-green btn-flat" type="button" name="validate" value="1">Valider</button>
-                      <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Valider</a> -->
-                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">refuser</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              
             </tbody>
           </table>
         </div>
