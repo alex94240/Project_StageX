@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div class="row card-panel">
-			<form class="col s12" action="ResearchServlet">
+			<form class="col s12" action="ResearchServlet" method="post">
 				<div class="row">
 					<div class="input-field col s12">
 						<i class="material-icons prefix">play_for_work</i> <input
