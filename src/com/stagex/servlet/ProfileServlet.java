@@ -72,9 +72,19 @@ public class ProfileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//TODO: upload and download cv, motivation, image
+		int studentId = (int) request.getAttribute("studentId");
 		
+		StudentDaoFactory studentBdd = new StudentDaoFactory();
+		Map<String,Object> sqlWhereStudent = new HashMap<String, Object>(); 
+		Student student = null;
 		
+		try {
+			student = studentBdd.find(studentId, Student.class);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("student", student);
 		
 		this.getServletContext().getRequestDispatcher("/profile.jsp" ).forward( request, response );
 
