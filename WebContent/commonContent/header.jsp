@@ -8,8 +8,7 @@
         <a href="home.jsp" class="brand-logo">Stage X</a>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-        <%System.out.println(session.getAttribute("usertype")); %>
-        	<c:if test= "${sessionScope.usertype == 'teacher'}">
+        	<c:if test= "${sessionScope.usertype == 'enseignant'}">
          		<li><a href="Statistics">Suivi parcours</a></li>
           	</c:if>
           <li><a href="offers.jsp">Offres d'emplois et de stages</a></li>

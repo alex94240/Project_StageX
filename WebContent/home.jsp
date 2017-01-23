@@ -24,7 +24,10 @@
           <h4>Accueil</h4>
         </div>
       </div>
+    <img class="responsive-img" src="img/isepschool.jpg">
+            
     </main>
+    
   </div>
 
 <%@ include file="commonContent/footer.jsp" %>

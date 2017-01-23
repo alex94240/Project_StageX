@@ -60,8 +60,7 @@ public class ProfileServlet extends HttpServlet {
 		
 		System.out.println(student.toString());
 		
-		request.setAttribute("student", student); //dans cet attribut
-				
+		request.setAttribute("student", student); 
 		
 		this.getServletContext().getRequestDispatcher("/profile.jsp" ).forward( request, response );
 				
@@ -90,7 +89,7 @@ public class ProfileServlet extends HttpServlet {
 
 	}
 	
-	private static String getSubmittedFileName(Part part) {
+	/*private static String getSubmittedFileName(Part part) {
 	    for (String cd : part.getHeader("content-disposition").split(";")) {
 	        if (cd.trim().startsWith("filename")) {
 	            String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
@@ -98,6 +97,6 @@ public class ProfileServlet extends HttpServlet {
 	        }
 	    }
 	    return null;
-	}
+	}*/
 
 }
