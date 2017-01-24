@@ -58,7 +58,7 @@
                   <!-- Modal Structure -->
                   <div id="modal1" class="modal">
                     <div class="modal-content">
-                      <h4>${offer.title}-${company.comapnyName}</h4>
+                      <h4>${offer.title} - ${offer.contactFirstName}</h4>
                       <p>${offer.description}</p>
                     </div>
                     <div class="modal-footer">
