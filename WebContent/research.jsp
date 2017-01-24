@@ -37,7 +37,7 @@
 					<div class="input-field col s12">
 						<i class="material-icons prefix">play_for_work</i> <input
 							id="icon_prefix" type="text" class="validate" name="keyword">
-						<label for="icon_prefix">Input something you want research</label>
+						<label for="icon_prefix">Input company name you want research</label>
 					</div>
 				</div>
 				<div class="col s3 offset-s5">
