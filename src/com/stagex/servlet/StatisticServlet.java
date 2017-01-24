@@ -42,7 +42,7 @@ public class StatisticServlet extends HttpServlet {
 		request.setAttribute("avgSalInternship",a);
 		request.setAttribute("avgSalJob",b);
 		request.setAttribute("companynames",c);
-		System.out.println(c.get(0));
+		
 
 		this.getServletContext().getRequestDispatcher( "/reporting.jsp" ).forward( request, response );
 	}

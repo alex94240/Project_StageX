@@ -31,12 +31,13 @@
           <div class="stats">
             <!-- TODO : statistics pie charts (camembert) -->
             <ul>
-                <li>Salaire moyen des étudiants en stage :<br>
+                <li>Salaire moyen des étudiants en stage :
                 	<span class="numbers center">${avgSalInternship}</span> 
                 </li>
-                <li>Salaire moyen des étudiants en entreprise :<br>
+                <li>Salaire moyen des étudiants en entreprise :
                 	<span class="numbers center">${avgSalJob}</span>  
                 </li>
+                <br>
                 <li>Compagnies acceuillant les etudiants en stage : </li>
 						<ul>
 							<c:forEach items="${companynames}" var="companyname">

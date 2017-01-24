@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,14 +39,18 @@
                   <th data-field="id">Société</th>
                   <th data-field="name">Type de poste</th>
                   <th data-field="price">Type</th>
+                  <th data-field="time">Durée</th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <td>Total</td>
-                <td>SI</td>
-                <td>Stage</td>
+              <c:forEach items="${offers}" var="offer">
+									
+                <td>${offer.contactFirstName}</td>
+                <td><c:out value="${offer.title}" /></td>
+                <td><c:out value="${offer.job}" /></td>
+                <td><c:out value="${offer.duration}" /></td>
                 <td style="text-align:right">
                   <!-- Modal Trigger -->
                   <a class="waves-effect waves-light btn btn-isep" href="#modal1">Voir</a>
@@ -53,56 +58,16 @@
                   <!-- Modal Structure -->
                   <div id="modal1" class="modal">
                     <div class="modal-content">
-                      <h4>Modal Header</h4>
-                      <p>A bunch of text</p>
+                      <h4>${offer.title}-${company.comapnyName}</h4>
+                      <p>${offer.description}</p>
                     </div>
                     <div class="modal-footer">
                       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                     </div>
                   </div>
+                  </c:forEach>
                 </td>
 
-              </tr>
-              <tr>
-                <td>Alten</td>
-                <td>IOT</td>
-                <td>CDD</td>
-                <td style="text-align:right">
-                  <!-- Modal Trigger -->
-                  <a class="waves-effect waves-light btn btn-isep" href="#modal1">Voir</a>
-
-                  <!-- Modal Structure -->
-                  <div id="modal1" class="modal">
-                    <div class="modal-content">
-                      <h4>Modal Header</h4>
-                      <p>A bunch of text</p>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>EY</td>
-                <td>SE</td>
-                <td>CDI</td>
-                <td style="text-align:right">
-                  <!-- Modal Trigger -->
-                  <a class="waves-effect waves-light btn btn-isep" href="#modal1">Voir</a>
-
-                  <!-- Modal Structure -->
-                  <div id="modal1" class="modal">
-                    <div class="modal-content">
-                      <h4>Modal Header</h4>
-                      <p>A bunch of text</p>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
