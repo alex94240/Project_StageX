@@ -13,7 +13,7 @@
         	<c:if test= "${sessionScope.usertype == 'enseignant'}">
          		<li><a href="Statistics">Suivi parcours</a></li>
           	</c:if>
-          <li><a href="offers.jsp">Offres d'emplois et de stages</a></li>
+          <li><a href="OffersServlet">Offres d'emplois et de stages</a></li>
           <li><a href="apply-internship-agreement">Demande de convention</a></li>
           <c:if test= "${sessionScope.usertype == 'eleve'}">
           	<li><a href="ProfileServlet">Profil</a></li>
@@ -30,7 +30,7 @@
 	<c:if test= "${sessionScope.usertype == 'enseignant'}">
 		<li><a href="Statistics">Suivi parcours</a></li>
     </c:if>
-    <li><a href="">Offres d'emplois et de stages</a></li>
+    <li><a href="OffersServlet">Offres d'emplois et de stages</a></li>
   <li><a href="apply-internship-agreement">Demande de convention</a></li>
   <c:if test= "${sessionScope.usertype == 'eleve'}">
   	<li><a href="ProfileServlet">Profil</a></li>

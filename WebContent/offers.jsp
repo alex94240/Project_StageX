@@ -39,9 +39,9 @@
             </thead>
 
             <tbody>
-              <tr>
+              
               <c:forEach items="${offers}" var="offer">
-									
+				<tr>					
                 <td>${offer.contactFirstName}</td>
                 <td><c:out value="${offer.title}" /></td>
                 <td><c:out value="${offer.job}" /></td>
@@ -53,16 +53,17 @@
                   <!-- Modal Structure -->
                   <div id="modal1" class="modal">
                     <div class="modal-content">
-                      <h4>${offer.title}-${company.comapnyName}</h4>
+                      <h4>${offer.title}-${offer.contactFirstName}</h4>
                       <p>${offer.description}</p>
                     </div>
                     <div class="modal-footer">
                       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                     </div>
                   </div>
-                  </c:forEach>
-                </td>
-
+                  </td>
+				</tr>
+              </c:forEach>
+               
             </tbody>
           </table>
         </div>
