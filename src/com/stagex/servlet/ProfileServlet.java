@@ -43,10 +43,10 @@ public class ProfileServlet extends HttpServlet {
 		StudentDaoFactory studentBdd = new StudentDaoFactory();
 		HttpSession session = request.getSession();
 		
-		System.out.println(session.getAttribute("userid"));
+		System.out.println(request.getParameter("userid"));
 		
 		Map<String,Object> sqlWhereStudent = new HashMap<String, Object>();   
-		int id = (int) session.getAttribute("userid");
+		int id = Integer.parseInt(request.getParameter("userid"));
 		Student student = null;
 		try {
 			student = studentBdd.find(id, Student.class);
