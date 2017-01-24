@@ -26,11 +26,6 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s4 offset-s9">
-          <a class="waves-effect waves-light btn btn-isep" href="validate-offers.jsp"><i class="material-icons left">email</i>Valider les offres<span class="new badge red">4</span></a>
-        </div>
-      </div>
-      <div class="row">
         <div class="col s12">
           <table class="highlight responsive-table">
             <thead>

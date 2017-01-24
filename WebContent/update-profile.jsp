@@ -27,58 +27,63 @@
       </div>
       <div class="row card-panel">
       
-		<form class="col s12" action="UpdateProfil" method="post">
+		<form class="col s12" action="UpdateProfilServlet" method="post">
           <div class="row">       
 		    <div class="input-field col s6">
 		      <i class="material-icons prefix">account_circle</i>
-		      <input value="${student.firstName }" id="first_name2" type="text" class="validate">
+		      <input disabled value="${student.firstName }" id="first_name2" type="text" class="validate">
 		      <label class="active" for="first_name2">Prénom</label>
 		    </div>        
 	        <div class="input-field col s6">
 	          <i class="material-icons prefix">account_circle</i>
-	          <input value="${student.lastName }" id="last_name" type="text" class="validate">
+	          <input disabled value="${student.lastName }" id="last_name" type="text" class="validate">
 	          <label for="last_name">Nom</label>
 	        </div>
       	  </div>
       	  <div class="row"> 
 			  <div class="input-field col s12">
-			    <select>
+			    <select name="grade">
 			      <option value="" disabled selected>Choisir une option</option>
-			      <c:forEach begin="1990" end="${year}" step="1" var="i">
+			      <c:forEach begin="1990" end="${year+5}" step="1" var="i">
 			      	<option value="${i}"><c:out value="${i }"/></option>
 			      </c:forEach>
 			    </select>
 			    <label>Sélectionne ta promotion</label>
 			  </div>
 		  </div>
-		   
-		  
-		  
 		  
 	      <div class="row">
 	        <div class="input-field col s12">
 	          <i class="material-icons prefix">email</i>
-	          <input value="${student.email}" id="email" type="email" class="validate">
+	          <input value="${student.email}" id="email" name="email" type="email" class="validate">
 	          <label for="email">Email</label>
 	        </div>
 	      </div>  
 	      <div class="row">
 	        <div class="input-field col s12">
 	          <i class="material-icons prefix">phone</i>
-	          <input value="${student.telphone}" id="phone" type="text" class="validate">
+	          <input value="${student.telphone}" id="phone" name="telphone" type="text" class="validate">
 	          <label for="phone">Téléphone</label>
 	        </div>
 	      </div>
 	      <div class="row">
 	        <div class="input-field col s12">
-	        
-	          <input value="${student.telphone}" id="email" type="email" class="validate">
-	          <label for="email">Email</label>
+	        	<select name="parcours">
+			      <option value="" disabled selected>Choisir une option</option>
+			      <option value="information system">Système d'information</option>
+			      <option value="software">Génie Logiciel</option>
+			      <option value="business intelligence">Business Intelligence</option>
+			      <option value="telecom">Télécom et IoT</option>
+			      <option value="network">Réseau</option>
+			      <option value="health">Numérique et Santé</option>
+			    </select>
+	          <label>Parcours</label>
 	        </div>
 	      </div>
           <div class="row">
             <div class="col s3 offset-s5">
-            <i class="material-icons left"></i><input class="waves-effect waves-light btn btn-isep" type="submit" name="submit" value="Envoyer">
+            <i class="material-icons left">email</i>
+            <input class="waves-effect waves-light btn btn-isep" type="submit" name="submit" value="Envoyer">
             </div>
           </div>
         </form>

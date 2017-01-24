@@ -70,7 +70,7 @@
   );
   
   function redirectProfile(id) {
-	  window.location = '/Technoweb/ProfileServlet?userid=' + id;  
+	  window.location = 'RedirectProfileServlet?userid=' + id;  
   }
   </script>
 </body>

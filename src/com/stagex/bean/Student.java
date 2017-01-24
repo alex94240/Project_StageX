@@ -46,8 +46,8 @@ public class Student {
 	@Column("socialSecruityNum")
 	private String socialSecruityNum;
 	
-	@Column("studentNumber")
-	private String studentNumber;
+	@Column("studentSpe")
+	private String studentSpe;
 
 	public int getStudentId() {
 		return studentId;
@@ -145,12 +145,12 @@ public class Student {
 		this.socialSecruityNum = socialSecruityNum;
 	}
 	
-	public String getStudentNumber() {
-		return studentNumber;
+	public String getStudentSpe() {
+		return studentSpe;
 	}
 
-	public void setStudentNumber(String studentNumber) {
-		this.studentNumber = studentNumber;
+	public void setStudentSpe(String studentSpe) {
+		this.studentSpe = studentSpe;
 	}
 
 	public String toString(){
@@ -167,7 +167,7 @@ public class Student {
 		res += " cv: " + getCv();
 		res += " picture: " + getPicture();
 		res += " socialSecruityNum: " + getSocialSecruityNum();
-		res += " studentNumber " + getStudentNumber();
+		res += " studentSpe " + getStudentSpe();
 		return res;
 	}
 
