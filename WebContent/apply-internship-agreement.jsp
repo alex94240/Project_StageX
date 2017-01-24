@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,9 +31,11 @@
           <!-- Modal Trigger -->
           <a class="modal-trigger waves-effect waves-light btn-floating btn-large btn-isep" href="#modal1"><i class="material-icons left">info</i></a>
         </div>
-        <div class="col s6 offset-s5">
-          <a class="waves-effect waves-light btn btn-isep" href="ValidateApplyServlet"><i class="material-icons left">email</i>Valider les demandes<span class="new badge red">4</span></a>
-        </div>
+        <c:if test= "${sessionScope.usertype == 'enseignant'}">
+	        <div class="col s6 offset-s5">
+	          <a class="waves-effect waves-light btn btn-isep" href="ValidateApplyServlet"><i class="material-icons left">email</i>Valider les demandes<span class="new badge red">4</span></a>
+	        </div>
+        </c:if>
       </div>
       <!-- Modal Structure -->
       <div id="modal1" class="modal">

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -61,25 +60,14 @@
               Étudiant
             </div>
             <div class="col s8">
-              Promotion 2018 ${student.garde}
+              Promotion ${student.garde}
             </div>
           </div>
           <div class="row">
             <div class="col s12">
-              Systèmes d'Information
+              ${student.studentSpe}
             </div>
           </div>
-          <form action="">
-            <div class="file-field input-field">
-              <div class="btn btn-isep">
-                <span>Image</span>
-                <input type="file">
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
-              </div>
-            </div>
-          </form>
         </div>
       </div>
       <div class="row">
@@ -113,13 +101,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s4 offset-s8">
-          <a class="waves-effect waves-light btn btn-isep"><i class="material-icons left">email</i>Enregistrer</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s4 offset-s8">
-          <a href="UpdateProfilServlet" class="waves-effect waves-light btn btn-isep"><i class="material-icons left">email</i>Modifier</a>
+        <div class="col s6 offset-s4">
+          <a href="UpdateProfilServlet" class="waves-effect waves-light btn btn-isep"><i class="material-icons left">email</i>Modifier mes informations</a>
         </div>
       </div>
     </main>

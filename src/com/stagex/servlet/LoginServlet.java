@@ -83,21 +83,18 @@ public class LoginServlet extends HttpServlet {
 					
 					
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					System.exit(1);
-				}*/
-			
+				}
+			*/
 			ldapobject = new LDAPObject("mylenacauche", "PsR/r7TJ", "Mylena Cauche", "Cauche", "Myléna", "eleve", "9215", "mylenacauche@gmail.com");
 			type = ldapobject.getType();
 	
 			//this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
 			}
-			else if(login.equals("msellami")){
+			else if(login.equals("msellami") && password.equals("password")){
 				//just for trying without LDAP connection
-				ldapobject = new LDAPObject("msellami", "password", "Mohamed Sellami", "Sellami", "Mohamed", "enseignant", "3256", "mohamed.sellami@gmail.com");
-				//System.out.println(ldapobject.toString());
-		
+				ldapobject = new LDAPObject("msellami", "password", "Mohamed Sellami", "Sellami", "Mohamed", "enseignant", "3256", "mohamed.sellami@gmail.com");		
 			}			
 			Map<String,Object> sqlWhereUser = new HashMap<String, Object>();   
 			sqlWhereUser.put("login", login);
@@ -150,7 +147,6 @@ public class LoginServlet extends HttpServlet {
 	    				student.setLastName(ldapobject.getNomFamille());
 	    				student.setEmail(ldapobject.getMail());
 	    				student.setUserId(userId);
-	    				student.setStudentNumber(ldapobject.getNumber());
 	    				
 	    				String nb = ldapobject.getNumber().substring(0, 2);
 	    				student.setPicture("http://storage.iseplive.fr/avatars/"+ nb+ "/" + ldapobject.getNumber() + ".jpg");

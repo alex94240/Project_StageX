@@ -27,11 +27,6 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s4 offset-s9">
-          <a class="waves-effect waves-light btn btn-isep" href="validate-offers.jsp"><i class="material-icons left">email</i>Valider les offres<span class="new badge red">4</span></a>
-        </div>
-      </div>
-      <div class="row">
         <div class="col s12">
           <table class="highlight responsive-table">
             <thead>
@@ -44,9 +39,9 @@
             </thead>
 
             <tbody>
-              <tr>
+              
               <c:forEach items="${offers}" var="offer">
-									
+				<tr>					
                 <td>${offer.contactFirstName}</td>
                 <td><c:out value="${offer.title}" /></td>
                 <td><c:out value="${offer.job}" /></td>
@@ -58,16 +53,17 @@
                   <!-- Modal Structure -->
                   <div id="modal1" class="modal">
                     <div class="modal-content">
-                      <h4>${offer.title} - ${offer.contactFirstName}</h4>
+                      <h4>${offer.title}-${offer.contactFirstName}</h4>
                       <p>${offer.description}</p>
                     </div>
                     <div class="modal-footer">
                       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                     </div>
                   </div>
-                  </c:forEach>
-                </td>
-
+                  </td>
+				</tr>
+              </c:forEach>
+               
             </tbody>
           </table>
         </div>

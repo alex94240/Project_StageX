@@ -17,7 +17,7 @@ public class CompanyDaoFactory extends GenericDaoImpl<Company>{
 			Connection conn= dbConn.getConnection();
 			Statement statement = conn.createStatement();
 			ResultSet resultat = statement.executeQuery("SELECT distinct companyname FROM company LEFT JOIN apply ON "
-					+ "company.companyId=apply.companyId  LIMIT 5;");
+					+ "company.companyId=apply.companyId;");
 			
 			ArrayList companies= new ArrayList<String>();
 			
