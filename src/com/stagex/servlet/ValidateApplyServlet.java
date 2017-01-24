@@ -35,15 +35,29 @@ public class ValidateApplyServlet extends HttpServlet {
 	        	e.printStackTrace();
 	        }
 		 request.setAttribute("apply", applyList); 
-         this.getServletContext().getRequestDispatcher( "/validate-apply.jsp" ).forward( request, response );
-     
+        this.getServletContext().getRequestDispatcher( "/validate-apply.jsp" ).forward( request, response );
+    
 
 	    }
 
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		Apply apply = new Apply();   
+		int validate = Integer.parseInt(request.getParameter("validate"));
+		System.out.println(validate);
+		
+		ApplyDaoFactory applyDaoFactory = new ApplyDaoFactory();
+		
+		if(validate==1){
+			applyDaoFactory.validateApply(apply, true);
+		}
+		else{
+			applyDaoFactory.validateApply(apply, false);
+		}
+		
+		this.getServletContext().getRequestDispatcher( "/validate-apply.jsp" ).forward( request, response );
+
 	}
 
 }

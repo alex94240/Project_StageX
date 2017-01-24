@@ -58,10 +58,14 @@
                       <p>${apply.applyGoal}</p>
                     </div>
                     <div class="modal-footer">
-                    	<!-- Copy this one !!!! -->
-                    	<button class=" modal-action modal-close waves-effect waves-green btn-flat" type="button" name="validate" value="1">Valider</button>
-                      <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Valider</a> -->
-                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">refuser</a>
+                    	<form method="post" action="ValidateApplyServlet">
+	
+			 				<table >
+		                    	<button  class=" modal-action modal-close waves-effect waves-green btn-flat" type="button" name="validate" value="1">Valider</button>
+		                        <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Valider</a> -->
+		                        <a href="ValidateApplyServlet" class=" modal-action modal-close waves-effect waves-green btn-flat">refuser</a>
+	                    	</table>
+						</form>
                     </div>
                   </div>
                 </td>

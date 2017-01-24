@@ -25,8 +25,6 @@ public class ApplyDaoFactory extends GenericDaoImpl<Apply>{
         	ResultSet resultat = statement.executeQuery("SELECT applyGoal,validate,apply.studentId,salary,apply.companyId,startDate,decription,firstName,lastName,companyName FROM apply RIGHT JOIN student ON student.studentId=apply.studentId LEFT JOIN company ON company.companyId=apply.companyId WHERE apply.validate=0");  
      
             while (resultat.next()) {
-                
-                
                 	
                 	Apply apply = new Apply();
                 	apply.setStudentId(resultat.getInt("studentId"));
