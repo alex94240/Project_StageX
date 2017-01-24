@@ -32,27 +32,29 @@
 		    <div class="input-field col s6">
 		      <i class="material-icons prefix">account_circle</i>
 		      <input value="${student.firstName }" id="first_name2" type="text" class="validate">
-		      <label class="active" for="first_name2">First Name</label>
+		      <label class="active" for="first_name2">Prénom</label>
 		    </div>        
 	        <div class="input-field col s6">
 	          <i class="material-icons prefix">account_circle</i>
 	          <input value="${student.lastName }" id="last_name" type="text" class="validate">
-	          <label for="last_name">Last Name</label>
+	          <label for="last_name">Nom</label>
 	        </div>
       	  </div>
       	  <div class="row"> 
 			  <div class="input-field col s12">
-			  <jsp:useBean id="date" class="java.util.Date"/>
 			    <select>
-			      <option value="" disabled selected>Sélectionne ta promotion</option>
-			      <c:forEach begin="1990" end="date.year" var="i">
-			      	<option value="${i}">${i}</option>
-			      	
+			      <option value="" disabled selected>Choisir une option</option>
+			      <c:forEach begin="1990" end="${year}" step="1" var="i">
+			      	<option value="${i}"><c:out value="${i }"/></option>
 			      </c:forEach>
 			    </select>
-			    <label>Materialize Select</label>
+			    <label>Sélectionne ta promotion</label>
 			  </div>
 		  </div>
+		   
+		  
+		  
+		  
 	      <div class="row">
 	        <div class="input-field col s12">
 	          <i class="material-icons prefix">email</i>
@@ -96,6 +98,11 @@
     draggable: true // Choose whether you can drag to open on touch screens
   }
   );
+  </script>
+  <script type="text/javascript"> 
+  $(document).ready(function() {
+    $('select').material_select();
+  });
   </script>
 </body>
 </html>

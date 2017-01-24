@@ -1,6 +1,8 @@
 package com.stagex.servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +49,7 @@ public class UpdateProfilServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("student", student);
-		
+		request.setAttribute("year", new SimpleDateFormat("yyyy").format(new Date()));
 		this.getServletContext().getRequestDispatcher("/update-profile.jsp" ).forward( request, response );
 
 	}
