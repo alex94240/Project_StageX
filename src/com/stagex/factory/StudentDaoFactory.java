@@ -101,6 +101,7 @@ public class StudentDaoFactory extends GenericDaoImpl<Student>{
 
 	      while(rs.next()){
 	    	  Student temp = new Student();
+	    	  temp.setStudentId(rs.getInt("studentId"));
 	    	  temp.setFirstName(rs.getString("firstName"));
 	    	  temp.setLastName(rs.getString("lastName"));
 	    	  temp.setEmail(rs.getString("email"));

@@ -31,7 +31,7 @@
           <a class="modal-trigger waves-effect waves-light btn-floating btn-large btn-isep" href="#modal1"><i class="material-icons left">info</i></a>
         </div>
         <div class="col s6 offset-s5">
-          <a class="waves-effect waves-light btn btn-isep" href="validate-apply.jsp"><i class="material-icons left">email</i>Valider les demandes<span class="new badge red">4</span></a>
+          <a class="waves-effect waves-light btn btn-isep" href="ValidateApplyServlet"><i class="material-icons left">email</i>Valider les demandes<span class="new badge red">4</span></a>
         </div>
       </div>
       <!-- Modal Structure -->
@@ -163,7 +163,14 @@
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">contact_phone</i>
-              <input id="icon_prefix" type="text" class="validate" name="personTelephone" value="<%= request.getAttribute("telephone")%>">
+              <input id="icon_prefix" type="text" class="validate" name="personTelephone" value=
+              "<%
+              String telephone = (String) request.getAttribute("telephone");
+              if(telephone != null){
+            	System.out.print(telephone);  
+              }
+              %>"
+              >
               <label for="icon_prefix">Téléphone portable</label>
             </div>
             <div class="col s3 offset-s5">

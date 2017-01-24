@@ -45,7 +45,7 @@
             <div class="row">
               <div class="input-field col s10 offset-s1">
                 <i class="material-icons prefix">vpn_key</i>
-                <input id="icon_prefix" type="text" name="password" class="validate">
+                <input id="icon_prefix" type="password" name="password" class="validate">
                 <label for="icon_prefix">Mot de passe</label>
               </div>
             </div>

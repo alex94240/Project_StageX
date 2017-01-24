@@ -36,6 +36,7 @@ public class ResearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher( "/research.jsp" ).forward( request, response );
+
 		
 	}
 

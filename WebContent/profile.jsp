@@ -22,8 +22,11 @@
   <div class="container">
     <main>
       <div class="row">
-        <div class="col s6">
-          <h4>Mon profil</h4>
+        <div class="col s6"> 
+        <c:choose>
+        	<c:when test="${student.studentId == sessionScope.userid}"><h4>Mon profil</h4></c:when>
+        	<c:otherwise><h4>Profil Elève</h4></c:otherwise>	
+        </c:choose>
         </div>
       </div>
       <div class="row">
@@ -44,7 +47,7 @@
             </div>
           </div>
         </div>
-        <div class="col s4 offset-s4">
+        <div class="col s6 offset-s3">
           <div class="row">
             <div class="col s4">
               <h4>${student.firstName}</h4>
@@ -112,6 +115,11 @@
       <div class="row">
         <div class="col s4 offset-s8">
           <a class="waves-effect waves-light btn btn-isep"><i class="material-icons left">email</i>Enregistrer</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4 offset-s8">
+          <a href="UpdateProfilServlet" class="waves-effect waves-light btn btn-isep"><i class="material-icons left">email</i>Modifier</a>
         </div>
       </div>
     </main>

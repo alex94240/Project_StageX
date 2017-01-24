@@ -43,39 +43,16 @@
 			</thead>
 			<tbody>
 				<c:forEach var="student" items="${students}">
-					<tr>
+					<tr onclick="redirectProfile(${student.studentId})">
 						<td><c:out value="${student.firstName}" /></td>
 						<td><c:out value="${student.lastName}" /></td>
 						<td><c:out value="${student.email}" /></td>
 						<td><c:out value="${student.telphone}" /></td>
 					</tr>
 				</c:forEach>
-
-			</tbody>
-			
-			<table class="highlight responsive-table" id="studentsSearchByCompany">
-			<thead>
-				<tr>
-					<th>ContactPrenom</th>
-					<th>ContactNom</th>
-					<th>Email</th>
-					<th>Type</th>
-					<th>Title</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="offer" items="${offers}">
-					<tr>
-						<td><c:out value="${offer.contactFirstName}" /></td>
-						<td><c:out value="${offer.contactLastName}" /></td>
-						<td><c:out value="${offer.email}" /></td>
-						<td><c:out value="${offer.job}" /></td>
-						<td><c:out value="${offer.title}" /></td>
-					</tr>
-				</c:forEach>
-
 			</tbody>
 		</table>
+
 		</div>
     </main>
   </div>
@@ -85,12 +62,16 @@
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script type="text/javascript">
+	<script type="text/javascript">
   $('.button-collapse').sideNav({
     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
     draggable: true // Choose whether you can drag to open on touch screens
   }
   );
+  
+  function redirectProfile(id) {
+	  window.location = '/Technoweb/ProfileServlet?userid=' + id;  
+  }
   </script>
 </body>
 

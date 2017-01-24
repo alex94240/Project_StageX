@@ -72,7 +72,7 @@ public class PostOffer extends HttpServlet {
 		}
 		
 		
-		this.getServletContext().getRequestDispatcher( "/post-offer.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/offers.jsp" ).forward( request, response );
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
