@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 			LDAPaccess ldapaccess = new LDAPaccess();
 			
 			if (!login.equals("msellami")){
-				/*try {
+				try {
 					ldapobject = ldapaccess.LDAPget(login, password);
 					if(ldapobject ==null){	
 						err = "Login ou mot de passe incorrect.";
@@ -86,11 +86,7 @@ public class LoginServlet extends HttpServlet {
 					e.printStackTrace();
 					System.exit(1);
 				}
-			*/
-			ldapobject = new LDAPObject("mylenacauche", "PsR/r7TJ", "Mylena Cauche", "Cauche", "Myléna", "eleve", "9215", "mylenacauche@gmail.com");
-			type = ldapobject.getType();
-	
-			//this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
+			
 			}
 			else if(login.equals("msellami") && password.equals("password")){
 				//just for trying without LDAP connection

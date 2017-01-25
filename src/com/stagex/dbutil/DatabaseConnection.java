@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class DatabaseConnection {
 	private static final String DBDRIVER = "com.mysql.jdbc.Driver";
-    private static final String DBURL = "jdbc:mysql://localhost:3306/stagex";
+    private static final String DBURL = "jdbc:mysql://localhost:3306/project_stagex";
     private static final String DBUSER = "root";
-    private static final String DBPASSWORD = "root";
+    private static final String DBPASSWORD = "";
     private Connection conn = null;
  
     public DatabaseConnection() throws Exception {
