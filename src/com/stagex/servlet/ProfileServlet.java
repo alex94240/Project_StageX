@@ -17,8 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.stagex.bean.Experience;
 import com.stagex.bean.Student;
+import com.stagex.bean.StudentExperience;
+import com.stagex.factory.ExperienceDaoFactory;
 import com.stagex.factory.StudentDaoFactory;
+import com.stagex.factory.StudentExperienceDaoFactory;
 
 /**
  * Servlet implementation class Profile
@@ -40,24 +44,20 @@ public class ProfileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		StudentDaoFactory studentBdd = new StudentDaoFactory();
 		HttpSession session = request.getSession();
 		
-		Map<String,Object> sqlWhereStudent = new HashMap<String, Object>();  
+		StudentDaoFactory studentBdd = new StudentDaoFactory();
 		int id = (int) session.getAttribute("userid");
 		Student student = null;
 		try {
 			student = studentBdd.find(id, Student.class);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//Student student = studentBdd.getStudent(request); //je récupère dans la bdd l'étudiant qui est en cours de session 		
-		
-		
+
 		System.out.println(student.toString());
-		
+		System.out.println(student.getStudentId());
+
 		request.setAttribute("student", student); 
 		
 		this.getServletContext().getRequestDispatcher("/profile.jsp" ).forward( request, response );
