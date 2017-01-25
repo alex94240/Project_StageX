@@ -68,8 +68,38 @@
               ${student.studentSpe}
             </div>
           </div>
+          </br>
+           <div class="row">
+	        <div class="col s12">
+	          <div class="card amber lighten-4">
+	            <div class="card-content">
+	              <span class="card-title">Developpeur Web</span>
+	              <p>Atos - 01/2014 à 05/2016</p>
+	              <p>
+					<ul>
+					    <li>Développement de sites Web / Backoffice</li>
+					    <li>Applications métiers Intranet / Extranet PHP</li>
+					    <li>SEO / SMO / Web marketing</li>
+					</ul>
+	              </p>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+          
+		  <div class="row">
+            <div class="col s10 offset-s1">
+                <a href="ProfileExperience" class="waves-effect waves-light btn btn-isep"><i class="material-icons left">add</i>Ajouter une expérience</a>
+              
+            </div>
+          </div>
         </div>
+        
       </div>
+      
+
+      
+      
       <div class="row">
         <div class="col s4">
           <form action="">
