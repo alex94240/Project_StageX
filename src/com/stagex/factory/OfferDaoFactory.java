@@ -22,7 +22,7 @@ public class OfferDaoFactory extends GenericDaoImpl<Offer>{
 		DatabaseConnection dbConn = new DatabaseConnection();
 		Connection conn= dbConn.getConnection();
 		Statement statement = conn.createStatement();
-		ResultSet resultat = statement.executeQuery("SELECT title,companyName,duration,salary,job FROM offer "
+		ResultSet resultat = statement.executeQuery("SELECT abilityRequirement,profileRequirement,description,title,companyName,duration,salary,job FROM offer "
 				+ "LEFT JOIN company ON offer.companyId=company.companyId WHERE validate=1;");
 		
 		
@@ -35,7 +35,9 @@ public class OfferDaoFactory extends GenericDaoImpl<Offer>{
          	offer.setJob(resultat.getString("job"));
          	offer.setTitle(resultat.getString("title"));
          	offer.setContactFirstName(resultat.getString("companyName"));
-    
+         	offer.setDescription(resultat.getString("description"));
+         	offer.setProfileRequirement(resultat.getString("profileRequirement"));
+         	offer.setAbilityRequirement(resultat.getString("abilityRequirement"));
          	offers.add(offer);     
      }
 		return offers;

@@ -39,14 +39,29 @@
                 </li>
                 <br>
                 <li>Compagnies acceuillant les etudiants en stage : </li>
-						<ul>
-							<c:forEach items="${companynames}" var="companyname">
-								
-									<li>${companyname}</li>
-								
-							</c:forEach>
 						
-					</ul>
+							<table class="bordered">
+							
+
+								<thead>
+									<tr>
+										<th data-field="company">Société</th>
+										<th data-field="salary">Salaire moyen</th>
+									</tr>
+								</thead>
+
+								<tbody>
+								<c:forEach items="${companies}" var="company">
+									<tr>
+										<td>${company.companyName}</td>
+										<td>${company.companyId}</td>
+										
+									</tr>
+								</tbody>
+								</c:forEach>
+							</table>
+
+					
           </div>
           
         </div>

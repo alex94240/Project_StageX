@@ -46,15 +46,21 @@
                 <td><c:out value="${offer.title}" /></td>
                 <td><c:out value="${offer.job}" /></td>
                 <td><c:out value="${offer.duration}" /></td>
-                <td style="text-align:right">
+                
+                <td style="text-align:left">
                   <!-- Modal Trigger -->
                   <a class="waves-effect waves-light btn btn-isep" href="#modal1">Voir</a>
 
                   <!-- Modal Structure -->
                   <div id="modal1" class="modal">
                     <div class="modal-content">
+                    
                       <h4>${offer.title}-${offer.contactFirstName}</h4>
-                      <p>${offer.description}</p>
+                      <p> ${offer.description}</p>
+                      <p><b>Profil:</b> ${offer.profileRequirement}</p>
+                      <p><b>Compétences</b>: ${offer.abilityRequirement }</p>
+                      <p><b>Rémunération:</b> ${offer.salary }</p>
+                      </c:forEach>
                     </div>
                     <div class="modal-footer">
                       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -62,7 +68,7 @@
                   </div>
                   </td>
 				</tr>
-              </c:forEach>
+              
                
             </tbody>
           </table>
