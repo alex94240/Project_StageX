@@ -56,20 +56,21 @@
                     <div class="modal-content">
                     
                       <h4>${offer.title}-${offer.contactFirstName}</h4>
-                      <p> ${offer.description}</p>
-                      <p><b>Profil:</b> ${offer.profileRequirement}</p>
-                      <p><b>Compétences</b>: ${offer.abilityRequirement }</p>
+                      <p> <c:out value="${offer.description}" /></p>
+                      <p><b>Profil:</b> <c:out value="${offer.profileRequirement}" /></p>
+                      <p><b>Compétences</b>: <c:out value="${offer.abilityRequirement}" /></p>
                       <p><b>Rémunération:</b> ${offer.salary }</p>
-                      </c:forEach>
+                      
                     </div>
                     <div class="modal-footer">
                       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                     </div>
                   </div>
                   </td>
+                  
 				</tr>
               
-               
+               </c:forEach>
             </tbody>
           </table>
         </div>

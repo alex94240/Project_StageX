@@ -59,12 +59,12 @@
                     </div>
                     <div class="modal-footer">
                     	<form method="post" action="ValidateApplyServlet">
-	
+							<input type="hidden" value=${apply.applyId } name="applyid">
 			 				<table >
-		                    	<button  class=" modal-action modal-close waves-effect waves-green btn-flat" type="button" name="validate" value="1">Valider</button>
-		                        <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Valider</a> -->
-		                        <a href="ValidateApplyServlet" class=" modal-action modal-close waves-effect waves-green btn-flat">refuser</a>
-	                    	</table>
+		                    	<button  class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="validate" value="1">Valider</button>
+		                        <button  class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="validate" value="0">Refuser</button>
+		                       
+		                        </table>
 						</form>
                     </div>
                   </div>

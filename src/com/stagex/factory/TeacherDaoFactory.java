@@ -23,7 +23,7 @@ public class TeacherDaoFactory extends GenericDaoImpl<Teacher> {
 		int a = 0;
 		while (resultat.next()){
 			a=resultat.getInt("avg(salary)");
-		
+			
 		}
 		resultat.close();
 		return a;

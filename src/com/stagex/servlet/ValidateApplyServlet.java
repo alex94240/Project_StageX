@@ -43,20 +43,20 @@ public class ValidateApplyServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Apply apply = new Apply();   
+		
 		int validate = Integer.parseInt(request.getParameter("validate"));
 		System.out.println(validate);
 		
 		ApplyDaoFactory applyDaoFactory = new ApplyDaoFactory();
 		
 		if(validate==1){
-			applyDaoFactory.validateApply(apply, true);
+			applyDaoFactory.validateApply(request.getParameter("applyid"), "1");
 		}
 		else{
-			applyDaoFactory.validateApply(apply, false);
+			applyDaoFactory.validateApply(request.getParameter("applyid"), "0");
 		}
 		
-		this.getServletContext().getRequestDispatcher( "/validate-apply.jsp" ).forward( request, response );
+		doGet(request, response);
 
 	}
 
